@@ -1,0 +1,66 @@
+<section id="login">
+    <div class="container-fluid ">
+        <div class="row full-height-vh">
+            <div class="col-12 d-flex align-items-center justify-content-center">
+                <div class="card  text-center width-400 ">
+                    <!-- <div>
+                        <img alt="element 06" class="mb-1" src="assets/img/logos/globocom-logo.png" width="190">
+                    </div> -->
+                    <div class="card-header" style="background-color: #009DA0">
+                        <!-- <span class="card-title"></span> -->
+                        <h4 class="card-title" id="striped-row-layout-basic">LogIn</h4>
+
+                    </div>
+                    <div class="text-center">
+                        <img alt="element 06" class="mb-1" src="assets/img/logos/globocom-logo.png" width="100">
+
+                    </div>
+
+                    <div class="card-body">
+                        <div class="card-block">
+                            <form class="form form-horizontal striped-rows form-bordered" [formGroup]="userLoginForm" (ngSubmit)="submitLogin()" novalidate>
+                                <div formGroupName="userInformation">
+                                    <div class="input-group mb-3">
+                                        <div class="input-group-prepend">
+                                            <span class="input-group-text">
+                                                <i class="icon-user"></i>
+                                            </span>
+                                        </div>
+                                        <input type="username" class="form-control" name="username" id="inputEmail" placeholder="Username" formControlName="username">
+                                    </div>
+
+                                    <div class="input-group mb-3">
+                                        <div class="input-group-prepend">
+                                            <span class="input-group-text">
+                                                <i class="ft-lock"></i>
+                                            </span>
+                                        </div>
+                                        <input type="password" class="form-control" name="password" id="password" placeholder="Password" formControlName="password">
+                                    </div>
+                                    <div class="input-group mb-3">
+                                        <span style="color:red" *ngIf="error">
+                                            User Name and Password are Incorrect.
+                                        </span>
+                                    </div>
+
+
+                                    <div class="form-group pt-1">
+                                        <div class="text-center mt-2">
+                                            <button type="submit" class="btn btn-primary btn-raised btn-block">Submit</button>
+                                            <!-- <button type="button" class="btn btn-secondary btn-block btn-raised">Cancel</button> -->
+                                        </div>
+                                    </div>
+
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                    <div class="card-footer">
+                        <div class="float-left black"><a (click)="onForgotPassword()">Reset Password</a></div>
+                        <!-- <div class="float-right"><a (click)="onRegister()" class="white">New User?</a></div> -->
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

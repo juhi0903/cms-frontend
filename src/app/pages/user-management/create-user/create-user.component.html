@@ -1,0 +1,90 @@
+<div class="row text-left justify-content-md-center">
+  <div class="col-md-5">
+      <div class="card">
+        <div class="card-header" style="background-color: #009DA0">
+          <!-- <span class="card-title"></span> -->
+          <h4 class="card-title" id="striped-row-layout-basic">Registration</h4>
+      </div>
+      <br>
+          <form class="form form-horizontal striped-rows form-bordered"  [formGroup]="userRegisterForm" (ngSubmit)="createNewUser()" novalidate>
+            <div formGroupName="userInformation">
+                <div class="card-body">
+                    <!-- <div class="px-3"> -->
+                        <div class="form-body">
+                            <!-- <h4 class="form-section"><i class="ft-file-text"></i>User Information</h4> -->
+                                <div class="form-group row">
+                                    <!-- <label class="col-md-3 label-control">User Id</label> -->
+                                      <div class="col-md-12">
+                                        <input type="text" class="form-control"  name="userId" formControlName="userId" placeholder="Enter User Id">
+                                        <small class="form-text text-muted danger" *ngIf="!userRegisterForm.get('userInformation.userId').valid && (userRegisterForm.get('userInformation.userId').dirty || userRegisterForm.get('userInformation.userId').touched)">
+                                            User Id is required!
+                                        </small>
+                                      </div>
+                                  </div>
+                                  <div class="form-group row">
+                                    <!-- <label class="col-md-3 label-control" >Email Address</label> -->
+                                      <div class="col-md-12">
+                                        <input type="email" class="form-control"  name="emailId" formControlName="emailId" placeholder="Enter Email Address">
+                                        <small class="form-text text-muted danger" *ngIf="!userRegisterForm.get('userInformation.emailId').valid && (userRegisterForm.get('userInformation.emailId').dirty || userRegisterForm.get('userInformation.emailId').touched)">
+                                          Email Address is invalid!
+                                        </small>
+                                      </div>
+                                  </div>
+                                  <div class="form-group row">
+                                     <!-- <label class="col-md-3 label-control">Gender</label> -->
+                                        <div class="col-md-12">
+                                          <select name="gender" class="form-control" formControlName="gender">
+                                                <option  value ="" selected>Select Gender</option>
+                                                <option *ngFor="let gender of genders" [value]='gender.name'>{{gender.name}}</option>
+                                            </select>
+                                            <small class="form-text text-muted danger" *ngIf="!userRegisterForm.get('userInformation.gender').valid && (userRegisterForm.get('userInformation.gender').dirty || userRegisterForm.get('userInformation.gender').touched)">
+                                              Gender is required!
+                                            </small>
+                                        </div>
+                                      </div>
+                                    <div class="form-group row">
+                                      <!-- <label class="col-md-3 label-control" >User Role</label> -->
+                                        <div class="col-md-12">
+                                          <!-- <input type="text" class="form-control"  name="jobTitle" formControlName="jobTitle" placeholder="Enter Role"> -->
+                                          <select name="userrole" class="form-control" formControlName="userrole">
+                                            <option  value ="" selected>Select User Role</option>
+                                            <option *ngFor="let userrole of userrole" [value]='userrole.id'>{{userrole.name}}</option>
+                                        </select>
+                                        <small class="form-text text-muted danger" *ngIf="!userRegisterForm.get('userInformation.userrole').valid && (userRegisterForm.get('userInformation.userrole').dirty || userRegisterForm.get('userInformation.userrole').touched)">
+                                          User Role is required!
+                                        </small>
+                                        </div>
+                                      </div>
+                                      <div class="form-group row">
+                                        <!-- <label class="col-md-3 label-control">Phone Number</label> -->
+                                          <div class="col-md-12">
+                                          <input type="tel" class="form-control" name="phoneNumber" formControlName="phoneNumber" placeholder="Enter Phone Number" minlength=10 maxlength=13>
+                                          <small class="form-text text-muted danger" *ngIf="!userRegisterForm.get('userInformation.phoneNumber').valid && (userRegisterForm.get('userInformation.phoneNumber').dirty || userRegisterForm.get('userInformation.phoneNumber').touched)">
+                                            Phone Number is invalid!
+                                          </small>
+                                        </div>
+                                      </div>
+                                      <div class="form-group row">
+                                        <!-- <label class="col-md-3 label-control">Date of Birth</label> -->
+                                        <div class="col-md-12">
+                                          <input type="date" class="form-control"  name="dob" formControlName="dob" placeholder="Enter Date of Birth">
+                                          <small class="form-text text-muted danger" *ngIf="!userRegisterForm.get('userInformation.dob').valid && (userRegisterForm.get('userInformation.dob').dirty || userRegisterForm.get('userInformation.dob').touched)">
+                                            Date of Birth is required!
+                                          </small>
+                                        </div>
+                                      </div>
+                        </div>
+                    <!-- </div> -->
+                </div>
+            </div>
+            
+          
+            <div class="form-actions">
+                <button type="button" class="btn btn-raised btn-warning mr-1" (click)="resetUserForm()"> Cancel</button>
+                <button type="submit" class="btn btn-raised btn-primary" [disabled]="!userRegisterForm.valid" > Submit </button>
+            </div>
+          </form>
+      </div>
+  </div>
+      
+</div>
