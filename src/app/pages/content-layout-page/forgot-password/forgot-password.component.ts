@@ -37,8 +37,8 @@ export class ForgotPasswordComponent implements OnInit {
 
 submitForm = async () => {
   let data = {
-    username : this.forgotPassowrdForm.value.userInformation.username,
-    password : this.forgotPassowrdForm.value.userInformation.password,
+    ul_username : this.forgotPassowrdForm.value.userInformation.username,
+    ul_password : this.forgotPassowrdForm.value.userInformation.password,
    }
 
    const result = await this._userServics.forgorPassword(data);

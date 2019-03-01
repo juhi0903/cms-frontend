@@ -11,7 +11,7 @@
 						<div class="form-body">
 							<h4 class="form-section"><i class="ft-file-text"></i>Category Management</h4>
 							<div class="form-group row">
-								<label class="col-md-3 label-control" for="projectinput7">Category</label>
+								<label class="col-md-3 label-control" for="projectinput7">Content</label>
 								<div class="col-md-4">
 									<select name="content" class="form-control" formControlName="content" (change)="selectCategory($event)">
 										<option value="" selected>Select Content Type</option>
@@ -27,11 +27,11 @@
 								</div>
 							</div>
 							<div class="form-group row">
-								<label class="col-md-3 label-control" for="projectinput7">Sub Category</label>
+								<label class="col-md-3 label-control" for="projectinput7">Category</label>
 								<div class="col-md-4">
 									<select name="category" class="form-control" formControlName="category" (change)="errorCheck()">
 										<option value="" selected>Select Category Type</option>
-										<option *ngFor="let obj of categoryList" [value]='obj.id'>{{obj.name}}</option>
+										<option *ngFor="let obj of categoryList" [value]='obj.cm_id'>{{obj.cm_name}}</option>
 									</select>
 									<br>
 									<div class="input-group mb-3">
@@ -53,20 +53,61 @@
 							<div class="form-group row" *ngIf="showtextbox">
 								<label class="col-md-3 label-control" for="projectinput7"></label>
 								<div class="col-md-4">
-									<input class="form-control" placeholder="Select Category" name="subcategory" formControlName="subcategory">
+									<input class="form-control" placeholder="Select New Category" name="subcategory" formControlName="subcategory">
 
 									<!-- <small class="form-text text-muted danger" *ngIf="!createOfferForm.get('offerInformation.bidrate').valid && (createOfferForm.get('offerInformation.bidrate').dirty || createOfferForm.get('offerInformation.bidrate').touched)">
 															Bid Rate is required!
 													</small> -->
 								</div>
-								<div class="col-md-3">
-									<button type="submit" class="btn btn-raised btn-primary mr-1" *ngIf="addcategory">Submit</button>
-									<button type="button" class="btn btn-raised btn-primary mr-1" *ngIf="updatecategory" (click)="updateCategory()">Submit</button>
+								<div class="col-md-5">
+									<button type="button" class="btn btn-raised btn-primary mr-1" (click)="translateCategory()">Translate</button>
+								</div>
+							</div>
+							<div class="form-group row">
+								<label class="col-md-3 label-control" for="projectinput7">Arabic </label>
+								<div class="col-md-4">
+									<input class="form-control" placeholder="Category Name in Arabic" name="arabic" formControlName="arabic">
+								</div>
+							</div>
+							<div class="form-group row">
+								<label class="col-md-3 label-control" for="projectinput7">Russian </label>
+								<div class="col-md-4">
+									<input class="form-control" placeholder="Category Name in Russian" name="russian" formControlName="russian">
+								</div>
+							</div>
+							<div class="form-group row">
+								<label class="col-md-3 label-control" for="projectinput7">French </label>
+								<div class="col-md-4">
+									<input class="form-control" placeholder="Category Name in French" name="french" formControlName="french">
+								</div>
+							</div>
+							<div class="form-group row">
+								<label class="col-md-3 label-control" for="projectinput7">Italic </label>
+								<div class="col-md-4">
+									<input class="form-control" placeholder="Category Name in Italic" name="italic" formControlName="italic">
+								</div>
+							</div>
+							<div class="form-group row">
+								<label class="col-md-3 label-control" for="projectinput7">Greek </label>
+								<div class="col-md-4">
+									<input class="form-control" placeholder="Category Name in Greek" name="greek" formControlName="greek">
+								</div>
+							</div>
+							<div class="form-group row">
+								<label class="col-md-3 label-control" for="projectinput7">Thai </label>
+								<div class="col-md-4">
+									<input class="form-control" placeholder="Category Name in Thai" name="thai" formControlName="thai">
 								</div>
 							</div>
 						</div>
 					</div>
 				</div>
+				<div class="form-actions">
+				<div class="col-md-3">
+					<button type="submit" class="btn btn-raised btn-primary mr-1" *ngIf="addcategory">Submit</button>
+					<button type="button" class="btn btn-raised btn-primary mr-1" *ngIf="updatecategory" (click)="updateCategory()">Submit</button>
+				</div>
+			</div>
 			</form>
 		</div>
 	</div>

@@ -51,7 +51,7 @@ export class CreateUserComponent implements OnInit {
       gender : new FormControl('', [Validators.required]),
       userrole : new FormControl('',[Validators.required]),
       phoneNumber : new FormControl('',[Validators.pattern(this.phonePattern)]),
-      dob : new FormControl(''),
+      name : new FormControl('',[Validators.required]),
 
     }),
   })
@@ -80,12 +80,12 @@ _patchForm = (value):void => {
 
 createNewUser = async () => {
   let user : any = {
-    dob : this.userRegisterForm.value.userInformation.dob,
-    phone : this.userRegisterForm.value.userInformation.phoneNumber,
-    email : this.userRegisterForm.value.userInformation.emailId,
-    username : this.userRegisterForm.value.userInformation.userId,
-    gender : this.userRegisterForm.value.userInformation.gender,
-    userrole : this.userRegisterForm.value.userInformation.userrole
+    ul_name : this.userRegisterForm.value.userInformation.name,
+    ul_phone : this.userRegisterForm.value.userInformation.phoneNumber,
+    ul_email : this.userRegisterForm.value.userInformation.emailId,
+    ul_username : this.userRegisterForm.value.userInformation.userId,
+    // gender : this.userRegisterForm.value.userInformation.gender,
+    ul_user_role : this.userRegisterForm.value.userInformation.userrole
   }
   const data =  await this._userServics.saveUser(user);
   this.router.navigate([ '/user/' + urls.viewUser], { relativeTo: this.route.parent });

@@ -2,12 +2,14 @@ import {environment }  from '../environments/environment'
 
 export const urls = {
     BASE_URL : environment.BASE_URL,
+    // BASE_URL : 'http://43.231.124.147/ginger/',
     allUsers : 'user/allusers',
     user : 'user',
     viewUser : 'view',
     login : 'login',
     password : 'password',
-    category : 'category'
+    category : 'category',
+    content : 'content'
     
 }
 
@@ -18,8 +20,10 @@ export const genders = [
 ]
 
 export const userrole = [
-  {id: "1001" , name: "Admin"},
-  {id: "1002" , name: "Content Provider"},
+  {id: "ADMIN" , name: "ADMIN"},
+  {id: "CP" , name: "CP"},
+  {id: "REVIEWER" , name: "REVIEWER"},
+  {id: "PUBLISHER" , name: "PUBLISHER"},
 ]
 
 

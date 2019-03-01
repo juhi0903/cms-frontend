@@ -51,8 +51,8 @@ onRegister (){
 
 submitLogin = async() => {
  let data = {
-  username : this.userLoginForm.value.userInformation.username,
-  password : this.userLoginForm.value.userInformation.password
+  ul_username : this.userLoginForm.value.userInformation.username,
+  ul_password : this.userLoginForm.value.userInformation.password
 
  }
   const result = await this._userServics.login(data);
