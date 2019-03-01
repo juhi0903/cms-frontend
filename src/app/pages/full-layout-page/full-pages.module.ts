@@ -10,8 +10,6 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { HttpClient, HttpClientModule } from '@angular/common/http';
 import { NgxChartsModule } from '@swimlane/ngx-charts';
 import { StorageServiceModule } from 'angular-webstorage-service';
-import { UploadContentComponent } from './upload-content/upload-content.component';
-import { ContentApproveComponent } from './content-approve/content-approve.component';
 import { CreateCategoryComponent } from './create-category/create-category.component';
 import {CategoryService} from '../../shared/services/category/category.service'
 
@@ -34,8 +32,6 @@ import {CategoryService} from '../../shared/services/category/category.service'
     schemas: [ CUSTOM_ELEMENTS_SCHEMA],
     declarations: [       
         FullLayoutPageComponent,
-        UploadContentComponent,
-        ContentApproveComponent,
         CreateCategoryComponent
     ],
     providers: [

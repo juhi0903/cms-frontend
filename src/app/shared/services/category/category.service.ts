@@ -38,8 +38,8 @@ export class CategoryService {
     return this._httpService.delete(urls.BASE_URL + urls.category +'/' +id , this.httpOptions).toPromise() as any;
   }
 
-  public updateCategory = async (id,name): Promise<any[]> => {
-    return this._httpService.put(urls.BASE_URL + urls.category +'/' +id +'/' +name , this.httpOptions).toPromise() as any;
+  public updateCategory = async (data): Promise<any[]> => {
+    return this._httpService.put(urls.BASE_URL + urls.category , data , this.httpOptions).toPromise() as any;
   }
 
   public getCategory = async (id): Promise<any[]> => {

@@ -14,7 +14,6 @@ export class CreateCategoryComponent implements OnInit {
 
   contentForm : FormGroup;
   addcategory = false;
-  updatecategory = false;
   showtextbox = false;
   updateerror = false;
   deleteerror = false;
@@ -41,7 +40,7 @@ export class CreateCategoryComponent implements OnInit {
     this.contentForm = this._formBuilder.group({
       contentInformation : this._formBuilder.group({
         content : new FormControl('',[Validators.required]),
-        category : new FormControl({value:''}),
+        category : new FormControl({value:'',disabled:true}),
         subcategory : new FormControl('',[Validators.required]),
         arabic : new FormControl('',[Validators.required]),
         russian : new FormControl('',[Validators.required]),
@@ -56,7 +55,7 @@ export class CreateCategoryComponent implements OnInit {
   selectCategory = async()=>{
     let category = this.contentForm.value.contentInformation.content;
     this.adderror = false;
-    // this.contentForm.get('contentInformation.category').enable();
+    this.contentForm.get('contentInformation.category').enable();
     this.categoryList = await this._CategoryService.getCategoryList(category);
     // console.log(this.categoryList);
 
@@ -68,12 +67,10 @@ export class CreateCategoryComponent implements OnInit {
     if(id == ''){
       this.adderror = true;
     }else{
-    // this.contentForm.get('contentInformation.category').disable();
+    this.contentForm.get('contentInformation.category').disable();
     this.addcategory = true;
     this.showtextbox = true;
     this.adderror = false;
-    if(this.updatecategory==true)
-      this.updatecategory = false;
     }
   }
 
@@ -87,7 +84,6 @@ export class CreateCategoryComponent implements OnInit {
       this.deleteerror = false;
 
     }else{
-      this.updatecategory = true;
       this.showtextbox = true;
       this.updateerror = false;
       if(this.addcategory==true)
@@ -96,10 +92,11 @@ export class CreateCategoryComponent implements OnInit {
   }
 
   addSubCategory = async() => {
-    let id = this.contentForm.value.contentInformation.content;
+    let contentid = this.contentForm.value.contentInformation.content;
+    let id = this.contentForm.value.contentInformation.category;
     let name = this.contentForm.value.contentInformation.subcategory;
-    let data = {
-      cm_ct_id : id,
+    let data : any ={
+      cm_ct_id : contentid,
       cm_name : name,
       cm_name_arabic : this.contentForm.value.contentInformation.arabic,
       cm_name_russian : this.contentForm.value.contentInformation.russian,
@@ -109,13 +106,24 @@ export class CreateCategoryComponent implements OnInit {
       cm_name_thai : this.contentForm.value.contentInformation.thai,
     }
 
-    if(id>0 && (name!='' || name!=null)){
+    if(contentid>0 && (name!='' || name!=null)){
       this.categoryList = [];
       this.showtextbox = false;
       this.addcategory =false;
-      await this._CategoryService.addNewCategory(data).then(data =>{
-        this.selectCategory();
-      });
+      if(id > 0){
+        data.cm_id = id;
+        await this._CategoryService.updateCategory(data).then(data =>{
+          this.selectCategory();
+       });
+
+      }
+      else{
+        await this._CategoryService.addNewCategory(data).then(data =>{
+          this.contentForm.get('contentInformation.category').enable();
+
+          this.selectCategory();
+        });
+      }
     }
     else{
       this.adderror = true;
@@ -138,23 +146,23 @@ export class CreateCategoryComponent implements OnInit {
       this.deleteerror = true;
     }
   }
-  updateCategory = async() => {
+  // updateCategory = async() => {
     
-    let id = this.contentForm.value.contentInformation.category;
-    let name = this.contentForm.value.contentInformation.subcategory;
+  //   let id = this.contentForm.value.contentInformation.category;
+  //   let name = this.contentForm.value.contentInformation.subcategory;
 
-    if(id>0 && (name!='' || name!=null)){
-      this.categoryList = [];
-      await this._CategoryService.updateCategory(id,name).then(data =>{
-        this.selectCategory();
-     });
-      this.updatecategory = false;
-      this.showtextbox = false;
-    }
-    else{
-      this.updateerror = true;
-    }
-  }
+  //   if(id>0 && (name!='' || name!=null)){
+  //     this.categoryList = [];
+  //     await this._CategoryService.updateCategory(id,name).then(data =>{
+  //       this.selectCategory();
+  //    });
+  //     this.updatecategory = false;
+  //     this.showtextbox = false;
+  //   }
+  //   else{
+  //     this.updateerror = true;
+  //   }
+  // }
 
   errorCheck= async () =>{
     if(this.adderror == true)
@@ -183,21 +191,13 @@ export class CreateCategoryComponent implements OnInit {
 
   translateCategory = async () => {
     let name = this.contentForm.value.contentInformation.subcategory;
-
-    console.log(name);
-    
-
     this._CategoryService.translateArabic(name).then(data => {
         this.arabic = data[1][0][1][1];
-        console.log("Arabic>>>>>>>>>>>>> " +data[1][0][1][1]);
         this.contentForm.patchValue({
           contentInformation :{
             arabic : this.arabic,
           },
         });
-
-        
-
     });
     this._CategoryService.translateFrench(name).then(data => {
       this.french = data[1];
