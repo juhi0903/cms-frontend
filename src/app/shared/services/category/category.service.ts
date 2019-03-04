@@ -30,7 +30,7 @@ export class CategoryService {
 
   public getCategoryList = async (contentid): Promise<any[]> => {
 
-    return this._httpService.get(urls.BASE_URL + urls.category +'/' +contentid).toPromise() as any;
+    return this._httpService.get(urls.BASE_URL + urls.content +'/' +contentid).toPromise() as any;
 
   }
 
@@ -38,7 +38,38 @@ export class CategoryService {
     return this._httpService.delete(urls.BASE_URL + urls.category +'/' +id , this.httpOptions).toPromise() as any;
   }
 
-  public updateCategory = async (id,name): Promise<any[]> => {
-    return this._httpService.put(urls.BASE_URL + urls.category +'/' +id +'/' +name , this.httpOptions).toPromise() as any;
+  public updateCategory = async (data): Promise<any[]> => {
+    return this._httpService.put(urls.BASE_URL + urls.category , data , this.httpOptions).toPromise() as any;
   }
+
+  public getCategory = async (id): Promise<any[]> => {
+
+    return this._httpService.get(urls.BASE_URL + urls.category +'/' +id).toPromise() as any;
+
+  }
+
+  public translateArabic = async (id): Promise<any[]> => {
+
+   return this._httpService.get('https://www.google.com/inputtools/request?text='+id +'&ime=transliteration_en_ar&num=5&ie=utf-8&oe=utf-8&app=jsapi').toPromise() as any;
+  }
+  public translateFrench = async (id): Promise<any[]> => {
+
+    return this._httpService.get('https://www.google.com/inputtools/request?text='+id +'&ime=transliteration_en_fr&num=5&ie=utf-8&oe=utf-8&app=jsapi').toPromise() as any;
+   }
+   public translateItalic = async (id): Promise<any[]> => {
+
+    return this._httpService.get('https://www.google.com/inputtools/request?text='+id +'&ime=transliteration_en_it&num=5&ie=utf-8&oe=utf-8&app=jsapi').toPromise() as any;
+   }
+   public translateRussian = async (id): Promise<any[]> => {
+
+    return this._httpService.get('https://www.google.com/inputtools/request?text='+id +'&ime=transliteration_en_ru&num=5&ie=utf-8&oe=utf-8&app=jsapi').toPromise() as any;
+   }
+   public translateThai = async (id): Promise<any[]> => {
+
+    return this._httpService.get('https://www.google.com/inputtools/request?text='+id +'&ime=transliteration_en_th&num=5&ie=utf-8&oe=utf-8&app=jsapi').toPromise() as any;
+   }
+   public translateGreek = async (id): Promise<any[]> => {
+
+    return this._httpService.get('https://www.google.com/inputtools/request?text='+id +'&ime=transliteration_en_el&num=5&ie=utf-8&oe=utf-8&app=jsapi').toPromise() as any;
+   }
 }

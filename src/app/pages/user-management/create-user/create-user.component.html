@@ -12,6 +12,15 @@
                     <!-- <div class="px-3"> -->
                         <div class="form-body">
                             <!-- <h4 class="form-section"><i class="ft-file-text"></i>User Information</h4> -->
+                            <div class="form-group row">
+                              <!-- <label class="col-md-3 label-control" >Email Address</label> -->
+                                <div class="col-md-12">
+                                  <input type="text" class="form-control"  name="name" formControlName="name" placeholder="Enter Full Name">
+                                  <small class="form-text text-muted danger" *ngIf="!userRegisterForm.get('userInformation.name').valid && (userRegisterForm.get('userInformation.name').dirty || userRegisterForm.get('userInformation.name').touched)">
+                                   Name is required!
+                                  </small>
+                                </div>
+                            </div>
                                 <div class="form-group row">
                                     <!-- <label class="col-md-3 label-control">User Id</label> -->
                                       <div class="col-md-12">
@@ -64,15 +73,15 @@
                                           </small>
                                         </div>
                                       </div>
-                                      <div class="form-group row">
-                                        <!-- <label class="col-md-3 label-control">Date of Birth</label> -->
+                                      <!-- <div class="form-group row">
+                                        <label class="col-md-3 label-control">Date of Birth</label>
                                         <div class="col-md-12">
                                           <input type="date" class="form-control"  name="dob" formControlName="dob" placeholder="Enter Date of Birth">
                                           <small class="form-text text-muted danger" *ngIf="!userRegisterForm.get('userInformation.dob').valid && (userRegisterForm.get('userInformation.dob').dirty || userRegisterForm.get('userInformation.dob').touched)">
                                             Date of Birth is required!
                                           </small>
                                         </div>
-                                      </div>
+                                      </div> -->
                         </div>
                     <!-- </div> -->
                 </div>

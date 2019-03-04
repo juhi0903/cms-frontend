@@ -22,13 +22,13 @@ export class ViewComponent implements OnInit {
 
   setColumnDefs(){
     this.columnDefs = [
-      {headerName : "Id", field:'id' ,width: 130, suppressSizeToFit: true},
-      {headerName: "User", field: 'username' , width: 120, suppressSizeToFit: true},
-      {headerName: "Email", field: 'email' , width: 200, suppressSizeToFit: true },
-      {headerName: "Gender", field: 'gender', width: 180, suppressSizeToFit: true},
-      {headerName: "Contact", field: 'phone' , width: 130, suppressSizeToFit: true},
-      {headerName: "DOB", field: 'dob', width: 180, suppressSizeToFit: true},
-      {headerName: "Status", field: 'status', width: 180, suppressSizeToFit: true},
+      {headerName : "Id", field:'ul_id' ,width: 130, suppressSizeToFit: true},
+      {headerName: "Name", field: 'ul_name', width: 180, suppressSizeToFit: true},
+      {headerName: "UserId", field: 'ul_username' , width: 120, suppressSizeToFit: true},
+      {headerName: "Email", field: 'ul_email' , width: 200, suppressSizeToFit: true },
+      {headerName: "Contact", field: 'ul_phone' , width: 130, suppressSizeToFit: true},
+      {headerName: "Role", field: 'ul_user_role', width: 180, suppressSizeToFit: true},
+      {headerName: "Status", field: 'ul_status', width: 180, suppressSizeToFit: true},
     ];
   }
 
