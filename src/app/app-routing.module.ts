@@ -52,6 +52,11 @@ const appRoutes: Routes = [
         loadChildren: './pages/user-management/user-management.module#UserManagementModule',
         canActivate: [AuthGuard]
       },
+      {
+        path: 'content',
+        loadChildren: './pages/content-management/content-management.module#ContentManagementModule',
+        canActivate: [AuthGuard]
+      },
     ]
   },
   // { path: '', 

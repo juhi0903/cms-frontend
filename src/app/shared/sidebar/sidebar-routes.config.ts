@@ -20,6 +20,13 @@ export const ROUTES: RouteInfo[] = [
         ]
     },
     {
+        path: '', title: 'Content Management', icon: 'ft-align-left',  access: '1001', class: 'has-sub', badge: '', badgeClass: 'badge badge-pill badge-danger float-right mr-1 mt-1', isExternalLink: false,
+        submenu: [
+            { path: '/content/upload', title: 'Upload Content', icon: '',  access: '1001', class: '', badge: '', badgeClass: '', isExternalLink: true, submenu: [] },
+            { path: '/content/approve', title: 'Approve Content', icon: '',  access: '1001', class: '', badge: '', badgeClass: '', isExternalLink: true, submenu: [] },
+        ]
+    },
+    {
         path: '', title: 'Portal Management', icon: 'ft-align-left',  access: '1001', class: 'has-sub', badge: '', badgeClass: 'badge badge-pill badge-danger float-right mr-1 mt-1', isExternalLink: false,
         submenu: [
             { path: 'ereere', title: 'Create Portal', icon: '',  access: '1001', class: '', badge: '', badgeClass: '', isExternalLink: true, submenu: [] },
