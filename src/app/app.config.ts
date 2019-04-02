@@ -9,7 +9,8 @@ export const urls = {
     login : 'login',
     password : 'password',
     category : 'category',
-    content : 'content'
+    content : 'content',
+    upload : 'upload'
     
 }
 
