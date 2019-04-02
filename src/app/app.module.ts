@@ -9,6 +9,7 @@ import { HttpModule } from '@angular/http';
 import { AppComponent } from './app.component';
 import { ContentLayoutComponent } from "./layouts/content/content-layout.component";
 import { FullLayoutComponent } from "./layouts/full/full-layout.component";
+import { FileSelectDirective } from 'ng2-file-upload';
 import { FormsModule ,ReactiveFormsModule} from '@angular/forms';
 
 
@@ -22,6 +23,7 @@ import { AuthGuard } from './shared/auth/auth-guard.service';
         AppComponent,
         FullLayoutComponent,
         ContentLayoutComponent,
+        FileSelectDirective
         // LoginPageComponent
     ],
     imports: [
@@ -31,6 +33,8 @@ import { AuthGuard } from './shared/auth/auth-guard.service';
         NgbModule.forRoot(),
         HttpModule,
         HttpClientModule,
+        FormsModule,
+        
         // ReactiveFormsModule
     ],
     providers: [

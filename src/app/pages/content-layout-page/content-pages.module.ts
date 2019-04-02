@@ -6,7 +6,7 @@ import { ContentPagesRoutingModule } from "./content-pages-routing.module";
 // import { ContentLayoutPageComponent } from './content-layout-page.component';
 import { LoginPageComponent } from './login-page/login-page.component';
 import { ForgotPasswordComponent } from './forgot-password/forgot-password.component';
-import {UserService} from '../../shared/services/users/user.service'
+import {UserService} from '../../shared/services/users/user.service';
 
 
 
@@ -20,7 +20,7 @@ import {UserService} from '../../shared/services/users/user.service'
     declarations: [
         // ContentLayoutPageComponent,
         LoginPageComponent,
-        ForgotPasswordComponent
+        ForgotPasswordComponent,
     ],
     providers: [
         UserService
