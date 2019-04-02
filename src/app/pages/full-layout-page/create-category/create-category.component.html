@@ -13,7 +13,7 @@
 							<div class="form-group row">
 								<label class="col-md-3 label-control" for="projectinput7">Content</label>
 								<div class="col-md-4">
-									<select name="content" class="form-control" formControlName="content" (change)="selectCategory($event)">
+									<select name="content" class="form-control" formControlName="content" (change)="selectCategory()">
 										<option value="" selected>Select Content Type</option>
 										<option *ngFor="let obj of contentType" [value]='obj.id'>{{obj.name}}</option>
 									</select>
