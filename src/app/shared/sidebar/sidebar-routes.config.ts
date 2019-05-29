@@ -12,11 +12,11 @@ export const ROUTES: RouteInfo[] = [
     //     path: '/createticket', title: 'Create Ticket', icon: 'ft-layout', class: '', badge: '', badgeClass: '', isExternalLink: false, submenu: []
     // },
     {
-        path: '/createcategory', title: 'Category Management', icon: 'ft-align-left',  access: '1001', class: '', badge: '', badgeClass: '', isExternalLink: false,
+        path: '/', title: 'Category Management', icon: 'ft-align-left',  access: '1001', class: 'has-sub', badge: '', badgeClass: 'badge badge-pill badge-danger float-right mr-1 mt-1', isExternalLink: false,
         submenu: [
-            // { path: '/createcategory', title: 'Category', icon: '',  access: '1001', class: '', badge: '', badgeClass: '', isExternalLink: true, submenu: [] },
-            // { path: '/uploadcontent', title: 'Content Upload', icon: '', access: '1001',  class: '', badge: '', badgeClass: '', isExternalLink: true, submenu: [] },
-            // { path: '/approvecontent', title: 'Approve Content', icon: '',  access: '1001', class: '', badge: '', badgeClass: '', isExternalLink: true, submenu: [] },
+            { path: '/createcategory', title: 'Category', icon: '',  access: '1001', class: '', badge: '', badgeClass: '', isExternalLink: true, submenu: [] },
+            { path: '/createmapping', title: 'Create Mapping', icon: '', access: '1001',  class: '', badge: '', badgeClass: '', isExternalLink: true, submenu: [] },
+            { path: '/viewmapping', title: 'View Mapping', icon: '',  access: '1001', class: '', badge: '', badgeClass: '', isExternalLink: true, submenu: [] },
         ]
     },
     {
@@ -29,8 +29,8 @@ export const ROUTES: RouteInfo[] = [
     {
         path: '', title: 'Portal Management', icon: 'ft-align-left',  access: '1001', class: 'has-sub', badge: '', badgeClass: 'badge badge-pill badge-danger float-right mr-1 mt-1', isExternalLink: false,
         submenu: [
-            { path: 'ereere', title: 'Create Portal', icon: '',  access: '1001', class: '', badge: '', badgeClass: '', isExternalLink: true, submenu: [] },
-            { path: 'ere', title: 'View Portal', icon: '',  access: '1001', class: '', badge: '', badgeClass: '', isExternalLink: true, submenu: [] },
+            { path: '/portal/new', title: 'Create Portal', icon: '',  access: '1001', class: '', badge: '', badgeClass: '', isExternalLink: true, submenu: [] },
+            { path: '/portal/view', title: 'View Portal', icon: '',  access: '1001', class: '', badge: '', badgeClass: '', isExternalLink: true, submenu: [] },
         ]
     },
     {

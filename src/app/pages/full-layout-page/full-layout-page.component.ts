@@ -1,5 +1,5 @@
 import { Component , OnInit, Inject} from '@angular/core';
-import { TicketService} from "../../shared/services/ticket.service";
+// import { TicketService} from "../../shared/services/ticket.service";
 import { SESSION_STORAGE, StorageService  } from 'angular-webstorage-service';
 import { JwtHelperService } from '@auth0/angular-jwt';
 
@@ -17,7 +17,7 @@ export class FullLayoutPageComponent implements OnInit {
   completedTickets: number = 0;
   // totalProfit: number = 0;
 
-  constructor(private _ticketService : TicketService,@Inject(SESSION_STORAGE) private storage: StorageService) { }
+  constructor() { }
 
   ngOnInit() {
     this.login();

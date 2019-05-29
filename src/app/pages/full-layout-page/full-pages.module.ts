@@ -5,14 +5,22 @@ import { HttpModule } from '@angular/http';
 import { AgGridModule } from 'ag-grid-angular';
 import { FullPagesRoutingModule } from "./full-pages-routing.module";
 import { FullLayoutPageComponent } from './full-layout-page.component';
-import { TicketService} from "../../shared/services/ticket.service";
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { HttpClient, HttpClientModule } from '@angular/common/http';
 import { NgxChartsModule } from '@swimlane/ngx-charts';
 import { StorageServiceModule } from 'angular-webstorage-service';
 import { CreateCategoryComponent } from './create-category/create-category.component';
-import {CategoryService} from '../../shared/services/category/category.service'
+import {CategoryService} from '../../shared/services/category/category.service';
+import { PortalService } from '../../shared/services/portal/portal.service';
+// import { AngularMultiSelectModule } from 'angular2-multiselect-dropdown';
+import { NgMultiSelectDropDownModule } from 'ng-multiselect-dropdown';
+// import { AngularMultiSelectModule } from 'angular4-multiselect-dropdown/angular4-multiselect-dropdown';
 
+// import { CategoryPortalMappingComponent } from './category-portal-mapping/category-portal-mapping.component';
+// import { CategoryOperatorMappingComponent } from './view-mapping/category-operator-mapping.component'
+
+import { CreatePortalMappingComponent } from './create-portal-mapping/create-portal-mapping.component'
+import { ViewPortalMappingComponent } from './view-portal-mapping/view-portal-mapping.component'
  
 @NgModule({
   imports: [
@@ -24,7 +32,9 @@ import {CategoryService} from '../../shared/services/category/category.service'
     HttpClientModule,
     NgbModule,
     StorageServiceModule,
-    NgxChartsModule
+    NgxChartsModule,
+    // AngularMultiSelectModule,
+    NgMultiSelectDropDownModule.forRoot()
   ],
     entryComponents: [
 
@@ -32,11 +42,15 @@ import {CategoryService} from '../../shared/services/category/category.service'
     schemas: [ CUSTOM_ELEMENTS_SCHEMA],
     declarations: [       
         FullLayoutPageComponent,
-        CreateCategoryComponent
+        CreateCategoryComponent,
+        // CategoryPortalMappingComponent,
+        CreatePortalMappingComponent,
+        ViewPortalMappingComponent
+        // CategoryOperatorMappingComponent
     ],
     providers: [
-      TicketService,
-      CategoryService
+      CategoryService,
+      PortalService
     ]
 })
 export class FullPagesModule { }

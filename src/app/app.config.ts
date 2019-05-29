@@ -10,7 +10,12 @@ export const urls = {
     password : 'password',
     category : 'category',
     content : 'content',
-    upload : 'upload'
+    upload : 'upload',
+    portal : 'portal',
+    country : 'country',
+    viewcontentmapping : 'contentmapping',
+    savecontentmapping : 'categorymapping',
+    contentmappingstatus : 'contentmappingstatus'
     
 }
 

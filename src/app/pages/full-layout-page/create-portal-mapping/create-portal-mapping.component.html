@@ -1,0 +1,130 @@
+<div class="row text-left justify-content-md-center">
+	<div class="col-md-12">
+		<div class="card">
+			<!-- <div class="card-header">
+				<h6 class="card-title" id="striped-row-layout-basic">Create Offer</h6>
+			</div> -->
+			<form (ngSubmit)="viewCategoryPortalMapping()" class="form form-horizontal striped-rows form-bordered" [formGroup]="categoryPortalForm" novalidate>
+				<div formGroupName="categoryPortalInformation">
+					<div class="card-body">
+						<!-- <div class="px-3"> -->
+						<div class="form-body">
+							<h4 class="form-section"><i class="ft-file-text"></i>Category Mapping</h4>
+							<div class="row">
+								<div class="col-md-4">
+									<div class="form-group">
+										<label class=" label-control" for="projectinput7">Portal</label>
+											<select name="portal" class="form-control" formControlName="portal">
+												<option value="" selected>Select Portal</option>
+												<option *ngFor="let obj of portalList" [value]='obj.pm_id'>{{obj.pm_name}}</option>
+											</select>
+									</div>
+								</div>
+								<div class="col-md-4">
+								 <div class="form-group">
+									<label class=" label-control" for="projectinput7">Country</label>
+										<select name="country" class="form-control" formControlName="country" (change)="selectOperator()">
+											<option value="" selected>Select Country</option>
+											<option *ngFor="let obj of countryList" [value]='obj.id'>{{obj.name}}</option>
+										</select>
+										</div>
+									</div>
+									<div class="col-md-4">
+									<div class="form-group ">
+										<label class=" label-control" for="projectinput7">Operator</label>
+											<select name="operator" class="form-control" formControlName="operator">
+												<option value="" selected>Select Operator</option>
+												<option *ngFor="let obj of operatorList" [value]='obj.id'>{{obj.name}}</option>
+											</select>
+											</div>
+										</div>
+									</div>
+								<div class="row">
+										<div class="col-md-4">
+
+							<div class="form-group">
+								<label class=" label-control" for="projectinput7">Content</label>
+									<select name="contentType" class="form-control" formControlName="contentType" (change)="selectCategory()">
+										<option value="" selected>Select Content Type</option>
+										<option *ngFor="let obj of contentType" [value]='obj.id'>{{obj.name}}</option>
+									</select>
+								  </div>
+							</div>
+							<div class="col-md-4">
+              <div class="form-group">
+                  <label class=" label-control" for="projectinput7">Category</label>
+                    <select name="category" class="form-control" formControlName="category">
+                      <option value="" selected>Select Category Type</option>
+                      <option *ngFor="let obj of categoryList" [value]='obj.cm_id'>{{obj.cm_name}}</option>
+                    </select>
+                    </div>
+							</div>
+						</div>
+						
+						</div>
+						<br>
+						<h4 class="form-section"></h4>
+						<div class="form-actions">
+								<div class="">
+									<button type="submit" class="btn btn-raised btn-primary mr-1" [disabled]="!categoryPortalForm.valid">Submit</button>
+								</div>
+							</div>
+					</div>
+				
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
+<div>
+<div class="row text-left justify-content-md-center" *ngIf="show">
+		<div class="col-md-12">
+			<div class="card">
+					<!-- <div class="card-header">
+						<h4 class="card-title">Summary</h4>
+					</div> -->
+					<div class="card-body">
+							<div id ="campaignsummarydata" style="font-size: 0.8em; overflow-x: auto; overflow-y: auto; height: 500px;">
+								 <table id="summaryTable" cellpadding="0" cellspacing="0" class="display table table-bordered">
+									<thead>
+									<tr>
+										<th style="padding: 5px;">Date</th>
+										<th style="padding: 5px;">Portal Name</th>
+										<th style="padding: 5px;">Preview</th>
+										<th style="padding: 5px;">Content Name</th>
+										<th style="padding: 5px;">Content Type</th>
+										<th style="padding: 5px;">Category Name</th>
+										<th style="padding: 5px;">Country</th>
+										<th style="padding: 5px;">Operator</th>
+										<th style="padding: 5px;">Status</th>
+
+									</tr>
+									</thead>
+									<tbody>
+											<tr *ngFor="let obj of rowdata  ">
+												<!-- <tr> -->
+												<td class="hidden-phone">{{obj.cpm_addedon}}</td>
+
+												<td class="hidden-phone">{{obj.pm_name}}</td>
+													<td >
+														<!-- <div style="width: 100px; height: 100px;" class="fileupload-new thumbnail"> -->
+														<img alt="image" src="assets/img/gallery/125.gif" height="100" width="52">
+														<!-- </div> -->
+												 </td>
+												 <td class="hidden-phone">{{obj.cdm_title}}</td>
+												 <td class="hidden-phone">{{obj.ct_name}}</td>
+												 <td class="hidden-phone">{{obj.cm_name}}</td>
+												 <td class="hidden-phone">{{obj.country_name}}</td>
+												 <td class="hidden-phone">{{obj.operator_name}}</td>
+												 <td class="hidden-phone">
+													<button type="button" (click)="changeStatus(obj.cmp_id,obj.cpm_status)">{{obj.cpm_status}}</button>
+												</td>
+											</tr>
+									</tbody>
+								</table>
+							</div>
+					</div>
+			
+		</div>
+	</div>
+</div>
