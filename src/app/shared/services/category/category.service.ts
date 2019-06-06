@@ -111,4 +111,22 @@ export class CategoryService {
     return this._httpService.get(urls.BASE_URL + urls.content +'/' +content +'/' +category).toPromise() as any;
 
   }
+
+  public getContentList = async(data) : Promise<any[]> => {
+ 
+    return this._httpService.post(urls.BASE_URL + urls.content , data).toPromise() as any;
+
+  }
+
+  public approveContent = async(id) : Promise<any[]> => {
+ 
+    return this._httpService.get(urls.BASE_URL + urls.content + urls.approve  +'/' +id).toPromise() as any;
+
+  }
+
+  public rejectContent = async(id) : Promise<any[]> => {
+ 
+    return this._httpService.get(urls.BASE_URL + urls.content + urls.reject  +'/' +id).toPromise() as any;
+
+  }
 }

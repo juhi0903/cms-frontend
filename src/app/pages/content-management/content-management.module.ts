@@ -1,11 +1,11 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { FormsModule } from '@angular/forms';
 
+import { FormsModule, ReactiveFormsModule } from '@angular/forms'
 import { UploadContentComponent } from './upload-content/upload-content.component';
 import {ContentManagementRoutingModule } from './content-management-routing.module';
-import { ApproveContentComponent } from './approve-content/approve-content.component'
-
+import { ApproveContentComponent } from './approve-content/approve-content.component';
+import { PortalService } from '../../shared/services/portal/portal.service';
 import {UploadService} from '../../shared/services/upload/upload.service';
 import {CategoryService} from '../../shared/services/category/category.service'
 
@@ -13,9 +13,11 @@ import {CategoryService} from '../../shared/services/category/category.service'
   imports: [
     CommonModule,
     ContentManagementRoutingModule,
-    FormsModule
+
+    FormsModule,
+    ReactiveFormsModule,
   ],
   declarations: [UploadContentComponent, ApproveContentComponent],
-  providers  : [UploadService,CategoryService]
+  providers  : [UploadService,PortalService,CategoryService]
 })
 export class ContentManagementModule { }
