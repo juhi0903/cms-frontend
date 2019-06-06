@@ -15,6 +15,7 @@ export class ForgotPasswordComponent implements OnInit {
 
   forgotPassowrdForm : FormGroup;
   error = false;
+  status : any = "000";
 
   constructor(private router: Router,
     private route: ActivatedRoute,private _formBuilder: FormBuilder,private _userServics :UserService) { }
@@ -26,7 +27,8 @@ export class ForgotPasswordComponent implements OnInit {
       this.forgotPassowrdForm = this._formBuilder.group({
         userInformation : this._formBuilder.group({
           username: new FormControl('', [Validators.required]), 
-          password : new FormControl ('', [Validators.required])
+          oldpassword : new FormControl ('', [Validators.required]),
+          newpassword : new FormControl('',[Validators.required])
         }),
       })
     }
@@ -38,17 +40,22 @@ export class ForgotPasswordComponent implements OnInit {
 submitForm = async () => {
   let data = {
     ul_username : this.forgotPassowrdForm.value.userInformation.username,
-    ul_password : this.forgotPassowrdForm.value.userInformation.password,
+    ul_password : this.forgotPassowrdForm.value.userInformation.oldpassword,
+    ul_newpassword : this.forgotPassowrdForm.value.userInformation.newpassword
    }
 
    const result = await this._userServics.forgorPassword(data);
     if(result['status']==200){
       this.router.navigate(['/login'], { relativeTo: this.route.parent });
     }
-    else {
-      this.error = true;
+    else if(result['status'] == 403 || result['status'] == 402) {
+      this.status = result['status'];
       // window.alert("User Name and Password is incorrect");
+    }
+    else 
+      this.error = true;
+
     }
 }
 
-}
+

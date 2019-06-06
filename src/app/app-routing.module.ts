@@ -57,6 +57,11 @@ const appRoutes: Routes = [
         loadChildren: './pages/content-management/content-management.module#ContentManagementModule',
         canActivate: [AuthGuard]
       },
+      {
+        path: 'portal',
+        loadChildren: './pages/portal-management/portal-management.module#PortalManagementModule',
+        canActivate: [AuthGuard]
+      },
     ]
   },
   // { path: '', 

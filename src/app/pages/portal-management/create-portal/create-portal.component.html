@@ -1,0 +1,122 @@
+<div class="row text-left justify-content-md-center">
+	<div class="col-md-12">
+		<div class="card">
+			<!-- <div class="card-header">
+				<h6 class="card-title" id="striped-row-layout-basic">Create Offer</h6>
+			</div> -->
+			<form (ngSubmit)="addNewPortal()" class="form form-horizontal striped-rows form-bordered" [formGroup]="portalForm" novalidate>
+				<div formGroupName="portalInformation">
+					<div class="card-body">
+						<!-- <div class="px-3"> -->
+						<div class="form-body">
+							<h4 class="form-section"><i class="ft-file-text"></i>Portal Management</h4>
+							<div class="form-group row">
+								<label class="col-md-3 label-control" for="projectinput7">Portal Name</label>
+								<div class="col-md-6">
+                  <input class="form-control" placeholder="Enter Portal Name" name="name" formControlName="name">
+								</div>
+								</div>
+							<div class="form-group row">
+								<label class="col-md-3 label-control" for="projectinput7">Portal Title</label>
+								<div class="col-md-6">
+                 					 <input class="form-control" placeholder="Enter Portal Title" name="title" formControlName="title">
+								</div>
+								<div class="col-md-3">
+									<button type="button" class="btn btn-raised btn-primary mr-1" (click)="translatePortalTitle()">Translate</button>
+								</div>
+							</div>
+							
+							<div class="form-group row">
+								<label class="col-md-3 label-control" for="projectinput7">Portal Title in Arabic</label>
+								<div class="col-md-6">
+									<input class="form-control" placeholder="Enter Title in Arabic" name="titleArabic" formControlName="titleArabic">
+								</div>
+							</div>
+							<div class="form-group row">
+								<label class="col-md-3 label-control" for="projectinput7">Portal Title in Russian </label>
+								<div class="col-md-6">
+									<input class="form-control" placeholder="Enter Title in Russian" name="titleRussian" formControlName="titleRussian">
+								</div>
+							</div>
+							<div class="form-group row">
+								<label class="col-md-3 label-control" for="projectinput7">Portal Title in French </label>
+								<div class="col-md-6">
+									<input class="form-control" placeholder="Enter Title in French" name="titleFrench" formControlName="titleFrench">
+								</div>
+							</div>
+							<div class="form-group row">
+								<label class="col-md-3 label-control" for="projectinput7">Portal Title in Italic </label>
+								<div class="col-md-6">
+									<input class="form-control" placeholder="Enter Title in Italic" name="titleItalic" formControlName="titleItalic">
+								</div>
+							</div>
+							<div class="form-group row">
+								<label class="col-md-3 label-control" for="projectinput7">Portal Title in Greek </label>
+								<div class="col-md-6">
+									<input class="form-control" placeholder="Enter Title in Greek" name="titleGreek" formControlName="titleGreek">
+								</div>
+							</div>
+							<div class="form-group row">
+								<label class="col-md-3 label-control" for="projectinput7">Portal Title in Thai </label>
+								<div class="col-md-6">
+									<input class="form-control" placeholder="Enter Title in Thai" name="titleThai" formControlName="titleThai">
+								</div>
+              </div>
+							<div class="form-group row">
+									<label class="col-md-3 label-control" for="projectinput7">Portal Footer</label>
+									<div class="col-md-6">
+										<input class="form-control" placeholder="Enter Portal Footer" name="footer" formControlName="footer">
+									</div>
+									<div class="col-md-3">
+										<button type="button" class="btn btn-raised btn-primary mr-1" (click)="translatePortalFooter()">Translate</button>
+									</div>
+							</div>
+							
+							<div class="form-group row">
+								<label class="col-md-3 label-control" for="projectinput7">Portal Footer in Arabic</label>
+								<div class="col-md-6">
+									<input class="form-control" placeholder="Enter Footer in Arabic" name="footerArabic" formControlName="footerArabic">
+								</div>
+							</div>
+							<div class="form-group row">
+								<label class="col-md-3 label-control" for="projectinput7">Portal Footer in Russian </label>
+								<div class="col-md-6">
+									<input class="form-control" placeholder="Enter Footer in Russian" name="footerRussian" formControlName="footerRussian">
+								</div>
+							</div>
+							<div class="form-group row">
+								<label class="col-md-3 label-control" for="projectinput7">Portal Footer in French </label>
+								<div class="col-md-6">
+									<input class="form-control" placeholder="Enter Footer in French" name="footerFrench" formControlName="footerFrench">
+								</div>
+							</div>
+							<div class="form-group row">
+								<label class="col-md-3 label-control" for="projectinput7">Portal Footer in Italic </label>
+								<div class="col-md-6">
+									<input class="form-control" placeholder="Enter Footer in Italic" name="footerItalic" formControlName="footerItalic">
+								</div>
+							</div>
+							<div class="form-group row">
+								<label class="col-md-3 label-control" for="projectinput7">Portal Footer in Greek </label>
+								<div class="col-md-6">
+									<input class="form-control" placeholder="Enter Footer in Greek" name="footerGreek" formControlName="footerGreek">
+								</div>
+							</div>
+							<div class="form-group row">
+								<label class="col-md-3 label-control" for="projectinput7">Portal Footer in Thai </label>
+								<div class="col-md-6">
+									<input class="form-control" placeholder="Enter Footer in Thai" name="footerThai" formControlName="footerThai">
+								</div>
+							</div>
+						</div>
+          </div>
+          <div class="form-actions">
+            <div class="col-md-3">
+              <button type="submit" class="btn btn-raised btn-primary mr-1" [disabled]="!portalForm.valid">Submit</button>
+            </div>
+          </div>
+        </div>
+    </form>
+		</div>
+	</div>
+</div>
