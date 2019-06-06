@@ -10,15 +10,21 @@ export class UploadService {
 
   constructor(private  _httpService:HttpClient) { }
 
-  pushFileToStorage(file: File): Observable<HttpEvent<{}>> {
+  pushFileToStorage(file: File,contentid,categoryid): Observable<HttpEvent<{}>> {
     const formdata: FormData = new FormData();
     formdata.append('file', file);
+    formdata.append('id', contentid);
+    formdata.append('categoryid', categoryid);
+
+
     //formdata.append('contentType',contentType);
  
-    const req = new HttpRequest('POST', urls.BASE_URL+urls.upload, formdata, {
+    const req = new HttpRequest('POST', urls.BASE_URL+urls.upload, formdata,{
       reportProgress: true,
       responseType: 'text'
     });
     return this._httpService.request(req);
   }
 }
+
+
