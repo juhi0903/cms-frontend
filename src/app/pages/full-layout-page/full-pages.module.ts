@@ -20,7 +20,9 @@ import { NgMultiSelectDropDownModule } from 'ng-multiselect-dropdown';
 // import { CategoryOperatorMappingComponent } from './view-mapping/category-operator-mapping.component'
 
 import { CreatePortalMappingComponent } from './create-portal-mapping/create-portal-mapping.component'
-import { ViewPortalMappingComponent } from './view-portal-mapping/view-portal-mapping.component'
+import { ViewPortalMappingComponent } from './view-portal-mapping/view-portal-mapping.component';
+import { ShowImageComponent } from './show-image/show-image.component';
+
  
 @NgModule({
   imports: [
@@ -34,10 +36,10 @@ import { ViewPortalMappingComponent } from './view-portal-mapping/view-portal-ma
     StorageServiceModule,
     NgxChartsModule,
     // AngularMultiSelectModule,
-    NgMultiSelectDropDownModule.forRoot()
+    NgMultiSelectDropDownModule.forRoot(),
   ],
     entryComponents: [
-
+      ShowImageComponent
     ],
     schemas: [ CUSTOM_ELEMENTS_SCHEMA],
     declarations: [       
@@ -45,7 +47,8 @@ import { ViewPortalMappingComponent } from './view-portal-mapping/view-portal-ma
         CreateCategoryComponent,
         // CategoryPortalMappingComponent,
         CreatePortalMappingComponent,
-        ViewPortalMappingComponent
+        ViewPortalMappingComponent,
+        ShowImageComponent
         // CategoryOperatorMappingComponent
     ],
     providers: [

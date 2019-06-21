@@ -2,6 +2,7 @@ import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import { UploadContentComponent } from './upload-content/upload-content.component';
 import {ApproveContentComponent} from './approve-content/approve-content.component';
+import { ContentProviderComponent } from './content-provider/content-provider.component';
 
 
 const routes: Routes = [
@@ -19,6 +20,12 @@ const routes: Routes = [
             component: ApproveContentComponent,
             data: {
               title: 'Approve Content Page'
+            }
+          },{
+            path: 'contentprovider',
+            component: ContentProviderComponent,
+            data: {
+              title: 'Content Provider Page'
             }
           }
         ]

@@ -55,7 +55,7 @@
                     </select>
                     </div>
 							</div>
-							<div class="form-group row">
+							<!-- <div class="form-group row">
 								<label class="col-md-3 label-control" for="projectinput7">Content Id</label>
 								<div class="col-md-6">
 								<ng-multiselect-dropdown [data]="contentDataList"  formControlName="contentId" [settings]="dropdownContentSettings" 
@@ -69,28 +69,51 @@
 										  <c-item>
 											<ng-template let-item="item">
 												<label> {{item.cdm_title}}</label>
-												<img  src="assets/img/gallery/125.gif" style="width: 20%; border: 1px solid #efefef;margin-right: 20px;">
+												<img  src="{{content_url}}{{obj.cdm_content_path}}" style="width: 20%; border: 1px solid #efefef;margin-right: 20px;">
 
 											</ng-template>
 										  </c-item>
 										</ng-multiselect-dropdown>
 								</div>
-							</div>
-							<!-- <div *ngIf="contentDataList.length>0" class="roow">
-												<div  *ngFor="let obj of contentDataList">
+							</div> -->
+							<div *ngIf="contentDataList.length>0">
+									<input type="text" id="myInput" (keyup)="myFunction()" placeholder="Search .." title="Type in a name">
+												<!-- <div  *ngFor="let obj of contentDataList"> -->
+														<div id ="campaignsummarydata" >
+															 <!-- //style="font-size: 0.8em; overflow-x: auto; overflow-y: auto; height: 500px;" -->
+																<table id="summaryTable" cellpadding="0" cellspacing="0" class="display table table-bordered">  
+																 <thead>
+																 <tr>
+																	 <th style="padding: 5px;">Select</th>
+																	 <th style="padding: 5px;">Content Name</th>
+																	 <th style="padding: 5px;">Image</th>
+																 </tr>
+																 </thead>
+																 <tbody>
+																		 <tr *ngFor="let obj of contentDataList">
+																			 <td style="width:10%">	<input type="checkbox" value='{{obj.cdm_id}}'(change)="updateCheckedOptions(obj, $event)"/></td>
+																			 <td  style="width:30%"><label for="myCheckbox1">{{obj.cdm_title}}</label></td>
+																			 <td style="height:80% ; width:50%">
+																				<div >
+																						<img alt="image" src="{{content_url}}{{obj.cdm_content_path}}" height="100px" width="100px" (click)="expandImage(obj)" >
+																				</div> 
+																			</td>
+																		</tr>
+																</tbody>
+															</table>
 
-														<div class="column" >
+														<!-- <div class="column" >
 																<input type="checkbox" value='{{obj.cdm_id}}'  [(ngModel)]="selectedContent"/>
 																<label for="myCheckbox1">{{obj.cdm_title}}</label>
 
-																<img alt="image" src="assets/img/logos/globocom-logo.png" style="width:100%" >
+																<img alt="image" src="{{content_url}}{{obj.cdm_content_path}}" style="width:100%" > -->
 
 
 														</div>
 													
 													</div>
 
-							</div> -->
+							</div>
 						</div>
 						<div class="form-actions">
 							<div class="col-md-3">
@@ -98,7 +121,7 @@
 							</div>
 						</div>
           </div>
-        </div>
+        <!-- </div> -->
       </form>
     </div>
   </div>

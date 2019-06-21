@@ -108,7 +108,7 @@
 												<td class="hidden-phone">{{obj.pm_name}}</td>
 													<td >
 														<!-- <div style="width: 100px; height: 100px;" class="fileupload-new thumbnail"> -->
-														<img alt="image" src="assets/img/gallery/125.gif" height="100" width="52">
+														<img alt="image" src="{{content_url}}{{obj.cdm_content_path}}" height="100px" width="100px" (click)="expandImage(obj)">
 														<!-- </div> -->
 												 </td>
 												 <td class="hidden-phone">{{obj.cdm_title}}</td>

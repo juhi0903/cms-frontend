@@ -7,17 +7,24 @@ import {ContentManagementRoutingModule } from './content-management-routing.modu
 import { ApproveContentComponent } from './approve-content/approve-content.component';
 import { PortalService } from '../../shared/services/portal/portal.service';
 import {UploadService} from '../../shared/services/upload/upload.service';
-import {CategoryService} from '../../shared/services/category/category.service'
+import {CategoryService} from '../../shared/services/category/category.service';
+import { ShowImageComponent } from '../full-layout-page/show-image/show-image.component';
+import { FullPagesModule } from '../full-layout-page/full-pages.module';
+import { ContentProviderComponent } from './content-provider/content-provider.component';
+
 
 @NgModule({
   imports: [
     CommonModule,
     ContentManagementRoutingModule,
-
+    FullPagesModule,
     FormsModule,
     ReactiveFormsModule,
   ],
-  declarations: [UploadContentComponent, ApproveContentComponent],
-  providers  : [UploadService,PortalService,CategoryService]
+  declarations: [UploadContentComponent, ApproveContentComponent, ContentProviderComponent],
+  providers  : [UploadService,PortalService,CategoryService],
+  entryComponents: [
+    ShowImageComponent
+  ],
 })
 export class ContentManagementModule { }

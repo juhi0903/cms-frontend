@@ -1,11 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { PortalService } from '../../../shared/services/portal/portal.service';
 import { FormGroup, FormControl, Validators, FormArray, FormBuilder } from '@angular/forms';
-import {urls,status,contentType} from '../../../../app/app.config';
+import {urls,status,contentType,content_url} from '../../../../app/app.config';
 import {CategoryService} from '../../../shared/services/category/category.service';
-
-
-
+import { ShowImageComponent } from '../../full-layout-page/show-image/show-image.component';
+import {NgbModal} from "@ng-bootstrap/ng-bootstrap";
 
 @Component({
   selector: 'app-approve-content',
@@ -19,9 +18,13 @@ export class ApproveContentComponent implements OnInit {
   categoryList : any;
   status :  any;
   rowdata : any ;
+  content_url : any;
 
 
-  constructor(private _portalService : PortalService,private _CategoryService : CategoryService ,private _formBuilder :FormBuilder ) { }
+  constructor(private _portalService : PortalService,private _CategoryService : CategoryService ,
+    private _formBuilder :FormBuilder , private modalService : NgbModal ) {
+    this.content_url = content_url;
+   }
 
   ngOnInit() {
     this._initForm();
@@ -73,5 +76,13 @@ export class ApproveContentComponent implements OnInit {
     console.log(data);
 
   }
+
+  expandImage(obj){
+    let link = this.content_url + obj['cdm_content_path'];
+    console.log(link);
+    const modalRef = this.modalService.open(ShowImageComponent, {size: 'lg'});
+    modalRef.componentInstance.imageUrl = link;
+  }
+
 
 }

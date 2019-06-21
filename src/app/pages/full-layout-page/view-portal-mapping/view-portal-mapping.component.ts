@@ -1,10 +1,14 @@
 import { Component, OnInit } from '@angular/core';
 
 import { FormGroup, FormControl, Validators, FormArray, FormBuilder } from '@angular/forms';
+import {NgbModal} from "@ng-bootstrap/ng-bootstrap";
 
-import {urls,contentType} from '../../../../app/app.config'
+
+import {urls,contentType,content_url} from '../../../../app/app.config'
 import {CategoryService} from '../../../shared/services/category/category.service';
-import { PortalService } from '../../../shared/services/portal/portal.service'
+import { PortalService } from '../../../shared/services/portal/portal.service';
+import { ShowImageComponent } from '../show-image/show-image.component'
+
 
 @Component({
   selector: 'app-view-portal-mapping',
@@ -22,12 +26,16 @@ export class ViewPortalMappingComponent implements OnInit {
   contentDataList : any = [];
   selectedContent : any = [];
   dropdownContentSettings = {};
+  content_url : any;
+  optionsChecked = [];
 
   
 
-  constructor(private _formBuilder: FormBuilder, private _CategoryService : CategoryService, private _portalService : PortalService) {
+  constructor(private _formBuilder: FormBuilder, private _CategoryService : CategoryService, 
+    private _portalService : PortalService , private modalService : NgbModal ) {
     this.getPortalList(); 
     this.getCountryList();  
+    this.content_url = content_url;
   }
 
   ngOnInit() {
@@ -101,12 +109,14 @@ export class ViewPortalMappingComponent implements OnInit {
       operator_id    : this.categoryPortalForm.value.categoryPortalInformation.operator,
       content_type_id : this.categoryPortalForm.value.categoryPortalInformation.contentType,
       category_id   : this.categoryPortalForm.value.categoryPortalInformation.category,
-      content_array : this.convertToArraywithId(this.selectedContent),
+      content_array : this.convertToArraywithId(this.optionsChecked),
     }
 
     console.log(data);
     let d = await this._CategoryService.saveContentPortalMapping(data);
     this.uploadedSuccessfully();
+    this.contentDataList = [];
+    this.optionsChecked = [];
     window.alert("Mapping Done SUccessfully");
     // console.log(d);
 
@@ -118,8 +128,6 @@ export class ViewPortalMappingComponent implements OnInit {
 
     this.contentDataList = await this._CategoryService.getContentData(content,category);
     console.log(this.contentDataList);
-
-
   }
 
   convertToArraywithId(array) {
@@ -129,7 +137,7 @@ export class ViewPortalMappingComponent implements OnInit {
     }
     let finalArray = [];
     for(let i=0;i<array.length;i++) {
-      finalArray.push(array[i]['cdm_id']);
+      finalArray.push(array[i]);
     }
     return finalArray;
     }
@@ -154,5 +162,41 @@ export class ViewPortalMappingComponent implements OnInit {
     onDeSelectAll (items){
       console.log(items);
     }
+
+    updateCheckedOptions(object, event) {
+      let check = event.target.checked;
+      const index: number = this.optionsChecked.indexOf(object['cdm_id']);
+      if(check == true)
+      this.optionsChecked.push(object['cdm_id'])
+      else if(check == false && index!== -1)
+      this.optionsChecked.splice(index, 1);
+
+   }
+
+     myFunction() {
+    var input, filter, table, tr, td, i, txtValue;
+    input = document.getElementById("myInput");
+    filter = input.value.toUpperCase();
+    table = document.getElementById("summaryTable");
+    tr = table.getElementsByTagName("tr");
+    for (i = 0; i < tr.length; i++) {
+      td = tr[i].getElementsByTagName("td")[1];
+      if (td) {
+        txtValue = td.textContent || td.innerText;
+        if (txtValue.toUpperCase().indexOf(filter) > -1) {
+          tr[i].style.display = "";
+        } else {
+          tr[i].style.display = "none";
+        }
+      }       
+    }
+  }
+
+  expandImage(obj){
+    let link = this.content_url + obj['cdm_content_path'];
+    console.log(link);
+    const modalRef = this.modalService.open(ShowImageComponent, {size: 'lg'});
+    modalRef.componentInstance.imageUrl = link;
+  }
 
 }

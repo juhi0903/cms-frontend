@@ -17,7 +17,8 @@ export const urls = {
     savecontentmapping : 'categorymapping',
     contentmappingstatus : 'contentmappingstatus',
     approve : '/approve',
-    reject : '/reject'
+    reject : '/reject',
+    contentprovider : 'contentprovider',
     
 }
 
@@ -38,11 +39,13 @@ export const userrole = [
   export const contentType = [
     {id: 1001, name: 'ANIMATION'},
     {id: 1002, name: 'WALLPAPER'},
-    {id: 1003, name: 'GAMES'},
+    {id: 1003, name: 'ANDROID GAMES'},
     {id: 1004, name: 'VIDEOS'},
     {id: 1005, name: 'TEXTS'},
     {id: 1006, name: 'BANNER'},
     {id: 1007, name: 'AUDIO'},
+    {id: 1003, name: 'HTML GAMES'},
+
   ]
   
 
@@ -52,5 +55,6 @@ export const userrole = [
     {id: 'REJECTED', name: 'Delete'}
   ]
 
+  export const content_url = "http://43.231.124.147/repository/content";
  
 

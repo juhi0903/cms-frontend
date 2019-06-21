@@ -1,9 +1,12 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormControl, Validators, FormArray, FormBuilder } from '@angular/forms';
+import {NgbModal} from "@ng-bootstrap/ng-bootstrap";
 
-import {urls,contentType} from '../../../../app/app.config'
+import {urls,contentType,content_url} from '../../../../app/app.config'
 import {CategoryService} from '../../../shared/services/category/category.service';
-import { PortalService } from '../../../shared/services/portal/portal.service'
+import { PortalService } from '../../../shared/services/portal/portal.service';
+import { ShowImageComponent } from '../show-image/show-image.component'
+
 
 @Component({
   selector: 'app-create-portal-mapping',
@@ -21,10 +24,13 @@ export class CreatePortalMappingComponent implements OnInit {
   show = false;
   rowdata  : any = [];
   status = 1;
+  content_url : any;
 
-  constructor(private _formBuilder: FormBuilder, private _CategoryService : CategoryService, private _portalService : PortalService) {
+  constructor(private _formBuilder: FormBuilder, private _CategoryService : CategoryService,
+     private _portalService : PortalService ,  private modalService : NgbModal) {
     this.getPortalList(); 
     this.getCountryList();  
+    this.content_url = content_url;
   }
 
   ngOnInit() {
@@ -134,6 +140,13 @@ export class CreatePortalMappingComponent implements OnInit {
          await this._CategoryService.changeContentStatus(event1,this.status);
           this.viewCategoryPortalMapping();
          
+    }
+
+    expandImage(obj){
+      let link = this.content_url + obj['cdm_content_path'];
+      console.log(link);
+      const modalRef = this.modalService.open(ShowImageComponent, {size: 'lg'});
+      modalRef.componentInstance.imageUrl = link;
     }
 
 }

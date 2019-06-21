@@ -129,4 +129,14 @@ export class CategoryService {
     return this._httpService.get(urls.BASE_URL + urls.content + urls.reject  +'/' +id).toPromise() as any;
 
   }
+
+  public addNewCP = async (data): Promise<any[]> => {
+
+    let parameterList = "?" + Object.keys(data).map(function (k) {
+      return encodeURIComponent(k) + '=' + encodeURIComponent(data[k])
+    }).join('&');
+
+    const result = await this._httpService.post(urls.BASE_URL + urls.contentprovider, data, {responseType: 'text'}).toPromise() as any;
+    return result;
+  }
 }
