@@ -13,7 +13,7 @@ import { CreateCategoryComponent } from './create-category/create-category.compo
 import {CategoryService} from '../../shared/services/category/category.service';
 import { PortalService } from '../../shared/services/portal/portal.service';
 // import { AngularMultiSelectModule } from 'angular2-multiselect-dropdown';
-import { NgMultiSelectDropDownModule } from 'ng-multiselect-dropdown';
+// import { NgMultiSelectDropDownModule } from 'ng-multiselect-dropdown';
 // import { AngularMultiSelectModule } from 'angular4-multiselect-dropdown/angular4-multiselect-dropdown';
 
 // import { CategoryPortalMappingComponent } from './category-portal-mapping/category-portal-mapping.component';
@@ -36,7 +36,7 @@ import { ShowImageComponent } from './show-image/show-image.component';
     StorageServiceModule,
     NgxChartsModule,
     // AngularMultiSelectModule,
-    NgMultiSelectDropDownModule.forRoot(),
+    // NgMultiSelectDropDownModule.forRoot(),
   ],
     entryComponents: [
       ShowImageComponent
