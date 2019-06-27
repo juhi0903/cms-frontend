@@ -25,6 +25,8 @@ export const ROUTES: RouteInfo[] = [
             { path: '/content/contentprovider', title: 'Content Provider', icon: '',  access: '1001', class: '', badge: '', badgeClass: '', isExternalLink: true, submenu: [] },
             { path: '/content/upload', title: 'Upload Content', icon: '',  access: '1001', class: '', badge: '', badgeClass: '', isExternalLink: true, submenu: [] },
             { path: '/content/approve', title: 'Approve Content', icon: '',  access: '1001', class: '', badge: '', badgeClass: '', isExternalLink: true, submenu: [] },
+            { path: '/content/htmlgames', title: 'Html Game Metadata', icon: '',  access: '1001', class: '', badge: '', badgeClass: '', isExternalLink: true, submenu: [] },
+
         ]
     },
     {

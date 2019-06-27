@@ -139,4 +139,10 @@ export class CategoryService {
     const result = await this._httpService.post(urls.BASE_URL + urls.contentprovider, data, {responseType: 'text'}).toPromise() as any;
     return result;
   }
+
+  public getHtmlGamesData = async (contentid): Promise<any[]> => {
+
+    return this._httpService.get(urls.BASE_URL + urls.htmlgames +'/' +contentid).toPromise() as any;
+
+  }
 }

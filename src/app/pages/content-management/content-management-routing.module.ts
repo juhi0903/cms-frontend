@@ -3,6 +3,7 @@ import { Routes, RouterModule } from '@angular/router';
 import { UploadContentComponent } from './upload-content/upload-content.component';
 import {ApproveContentComponent} from './approve-content/approve-content.component';
 import { ContentProviderComponent } from './content-provider/content-provider.component';
+import { HtmlGamesExcelComponent } from './html-games-excel/html-games-excel.component';
 
 
 const routes: Routes = [
@@ -26,6 +27,12 @@ const routes: Routes = [
             component: ContentProviderComponent,
             data: {
               title: 'Content Provider Page'
+            }
+          },{
+            path: 'htmlgames',
+            component: HtmlGamesExcelComponent,
+            data: {
+              title: 'Html Games Page'
             }
           }
         ]

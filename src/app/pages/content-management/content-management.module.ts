@@ -11,6 +11,7 @@ import {CategoryService} from '../../shared/services/category/category.service';
 import { ShowImageComponent } from '../full-layout-page/show-image/show-image.component';
 import { FullPagesModule } from '../full-layout-page/full-pages.module';
 import { ContentProviderComponent } from './content-provider/content-provider.component';
+import { HtmlGamesExcelComponent } from './html-games-excel/html-games-excel.component';
 
 
 @NgModule({
@@ -21,7 +22,7 @@ import { ContentProviderComponent } from './content-provider/content-provider.co
     FormsModule,
     ReactiveFormsModule,
   ],
-  declarations: [UploadContentComponent, ApproveContentComponent, ContentProviderComponent],
+  declarations: [UploadContentComponent, ApproveContentComponent, ContentProviderComponent, HtmlGamesExcelComponent],
   providers  : [UploadService,PortalService,CategoryService],
   entryComponents: [
     ShowImageComponent

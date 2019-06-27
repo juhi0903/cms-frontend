@@ -19,6 +19,7 @@ export const urls = {
     approve : '/approve',
     reject : '/reject',
     contentprovider : 'contentprovider',
+    htmlgames : 'htmlgames'
     
 }
 
@@ -44,7 +45,7 @@ export const userrole = [
     {id: 1005, name: 'TEXTS'},
     {id: 1006, name: 'BANNER'},
     {id: 1007, name: 'AUDIO'},
-    {id: 1003, name: 'HTML GAMES'},
+    {id: 1008, name: 'HTML GAMES'},
 
   ]
   
