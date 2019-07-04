@@ -145,4 +145,9 @@ export class CategoryService {
     return this._httpService.get(urls.BASE_URL + urls.htmlgames +'/' +contentid).toPromise() as any;
 
   }
+
+  public getCP = async() : Promise<any[]> => {
+
+    return this._httpService.get(urls.BASE_URL + urls.cp).toPromise() as any;
+  }
 }

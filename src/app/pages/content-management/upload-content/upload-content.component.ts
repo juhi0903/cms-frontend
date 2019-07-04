@@ -21,6 +21,7 @@ export class UploadContentComponent implements OnInit {
   content : any;
   categoryList : any;
   category : any;
+  cp : any;
   
   
   constructor(private _uploadService:UploadService, private _CategoryService :CategoryService,private router : Router ) { }
@@ -28,6 +29,7 @@ export class UploadContentComponent implements OnInit {
   ngOnInit() {
     //this._initForm();
   this.contentType = contentType;
+  this.getCP();
   }
   upload(){
     console.log(this.selectedFiles.name);
@@ -63,6 +65,10 @@ selectCategory = async()=>{
 }
 redirect(){
   this.router.navigate(['/dashboard'])
+}
+
+getCP = async()=>{
+  this.cp = await this._CategoryService.getCP();
 }
 
 

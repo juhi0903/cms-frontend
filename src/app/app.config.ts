@@ -19,7 +19,8 @@ export const urls = {
     approve : '/approve',
     reject : '/reject',
     contentprovider : 'contentprovider',
-    htmlgames : 'htmlgames'
+    htmlgames : 'htmlgames',
+    cp : 'contentprovider'
     
 }
 

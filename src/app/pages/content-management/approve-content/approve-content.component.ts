@@ -80,8 +80,10 @@ export class ApproveContentComponent implements OnInit {
   expandImage(obj){
     let link = this.content_url + obj['cdm_content_path'];
     console.log(link);
+    // console.log("game link" +obj['cdm_url'])
     const modalRef = this.modalService.open(ShowImageComponent, {size: 'lg'});
     modalRef.componentInstance.imageUrl = link;
+    modalRef.componentInstance.gameUrl = obj['cdm_url'];
   }
 
 

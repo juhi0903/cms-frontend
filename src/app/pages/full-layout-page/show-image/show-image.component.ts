@@ -1,5 +1,7 @@
 import { Component, OnInit ,Input} from '@angular/core';
 import { NgbActiveModal } from '@ng-bootstrap/ng-bootstrap';
+import { Router } from '@angular/router';
+
 
 @Component({
   selector: 'app-show-image',
@@ -14,9 +16,13 @@ import { NgbActiveModal } from '@ng-bootstrap/ng-bootstrap';
   </div>
   <div class="modal-body">
 
-   <div >
-   <img alt="image" src="{{imageUrl}}" height="100%" width="100%" >
-    </div> 
+   <div *ngIf="gameUrl==null; else displaygame">
+    <img alt="image" src="{{imageUrl}}" height="100%" width="100%">
+    </div>
+    <ng-template #displaygame>
+    <img alt="image" src="{{imageUrl}}" height="100%" width="100%" (click)="showgames()">
+		</ng-template>
+   
   
  </div>
   <div class="modal-footer">
@@ -29,13 +35,19 @@ import { NgbActiveModal } from '@ng-bootstrap/ng-bootstrap';
 export class ShowImageComponent implements OnInit {
 
   @Input() imageUrl;
+  @Input() gameUrl;
 
-  constructor(public activeModal: NgbActiveModal) { 
+  constructor(public activeModal: NgbActiveModal , public  router : Router) { 
   }
 
   ngOnInit() {
     console.log("in Show image " +this.imageUrl);
+  }
 
+  showgames(){
+    // console.log(this.gameUrl);
+    // this.router.navigateByUrl(this.gameUrl);
+    window.open(this.gameUrl);
   }
 
 }

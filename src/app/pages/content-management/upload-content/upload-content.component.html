@@ -2,9 +2,9 @@
   
   <div class="form-group row">
     <label class="col-md-9 label-control" for="projectinput9">Add Files</label>
-    <div class="form-group row col-md-6">
+    <div class="form-group row col-md-4">
       <label class="label-control" for="projectinput7">Content</label>
-      <div class="col-md-6">
+      <div class="col-md-9">
         <select name="content" class="form-control" [(ngModel)]="content" (change)="selectCategory()">
           <option value="0" selected>Select Content Type</option>
           <option *ngFor="let obj of contentType" [value]='obj.id'>{{obj.name}}</option>
@@ -12,9 +12,9 @@
         
       </div>
     </div>
-      <div class="form-group row col-md-6">
+      <div class="form-group row col-md-4">
         <label class="label-control" for="projectinput7">Content Category</label>
-        <div class="col-md-6">
+        <div class="col-md-9">
           <select name="category" class="form-control" [(ngModel)]="category">
             <option value="0" selected>Select Category Type</option>
             <option *ngFor="let obj of categoryList" [value]='obj.cm_id'>{{obj.cm_name}}</option>
@@ -23,6 +23,18 @@
         </div>
       
     </div>
+
+    <div class="form-group row col-md-4">
+      <label class="label-control" for="projectinput7">Content Provider</label>
+      <div class="col-md-9">
+        <select name="cp" class="form-control" [(ngModel)]="contentP">
+          <option value="0" selected>Select CP</option>
+          <option *ngFor="let obj of cp" [value]='obj.cpname'>{{obj.cpname}}</option>
+        </select>
+        
+      </div>
+    
+  </div>
     <div class="col-md-9">
     
       <input type="file" class="add-files-btn" placeholder="Choose Files" (change)="selectFile($event)"> 
