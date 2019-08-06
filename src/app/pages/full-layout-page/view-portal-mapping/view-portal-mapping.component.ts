@@ -102,7 +102,7 @@ export class ViewPortalMappingComponent implements OnInit {
   }
 
   categoryPortalMapping = async () =>{
-
+    this.approveInBulk();
     let data : any = {
       portal_id   :  this.categoryPortalForm.value.categoryPortalInformation.portal,
       country_id   : this.categoryPortalForm.value.categoryPortalInformation.country,  
@@ -118,7 +118,7 @@ export class ViewPortalMappingComponent implements OnInit {
     this.contentDataList = [];
     this.optionsChecked = [];
     window.alert("Mapping Done SUccessfully");
-    // console.log(d);
+    console.log(d);
 
   }
 
@@ -163,17 +163,17 @@ export class ViewPortalMappingComponent implements OnInit {
       console.log(items);
     }
 
-    updateCheckedOptions(object, event) {
-      let check = event.target.checked;
-      const index: number = this.optionsChecked.indexOf(object['cdm_id']);
-      if(check == true)
-      this.optionsChecked.push(object['cdm_id'])
-      else if(check == false && index!== -1)
-      this.optionsChecked.splice(index, 1);
+  //   updateCheckedOptions(object, event) {
+  //     let check = event.target.checked;
+  //     const index: number = this.optionsChecked.indexOf(object['cdm_id']);
+  //     if(check == true)
+  //     this.optionsChecked.push(object['cdm_id'])
+  //     else if(check == false && index!== -1)
+  //     this.optionsChecked.splice(index, 1);
 
-   }
+  //  }
 
-     myFunction() {
+  myFunction() {
     var input, filter, table, tr, td, i, txtValue;
     input = document.getElementById("myInput");
     filter = input.value.toUpperCase();
@@ -197,6 +197,24 @@ export class ViewPortalMappingComponent implements OnInit {
     console.log(link);
     const modalRef = this.modalService.open(ShowImageComponent, {size: 'lg'});
     modalRef.componentInstance.imageUrl = link;
+  }
+
+  checkAll(ev) {
+    this.contentDataList.forEach(x => {
+      x.state = ev.target.checked;
+      console.log(x.state);
+
+    });
+  }
+
+  approveInBulk(){
+    this.contentDataList.forEach(x => {
+      const index: number = this.optionsChecked.indexOf(x.cdm_id);
+      if(x.state == true)
+      this.optionsChecked.push(x.cdm_id);
+      else if(index!== -1)
+      this.optionsChecked.splice(index, 1);
+    });
   }
 
 }

@@ -1,72 +1,91 @@
 <div class="row text-left justify-content-md-center">
 	<div class="col-md-12">
 		<div class="card">
-			<!-- <div class="card-header">
-				<h6 class="card-title" id="striped-row-layout-basic">Create Offer</h6>
-			</div> -->
-			<!-- <form (ngSubmit)="getContentList()" class="form form-horizontal striped-rows form-bordered" [formGroup]="contentForm" novalidate> -->
-				<!-- <div formGroupName="contentInformation"> -->
+			<form class="form form-horizontal striped-rows form-bordered" [formGroup]="contentForm" novalidate>
+				<div formGroupName="contentInformation">
 					<div class="card-body">
-						<!-- <div class="px-3"> -->
 						<div class="form-body">
-							<!-- <h4 class="form-section"><i class="ft-file-text"></i>Content Info</h4> -->
+							<h4 class="form-section"><i class="ft-file-text"></i>HTML METADATA</h4>
 								<div class="row">
-                    <div class="col-md-4">
-                        <div class="form-group" style="padding:10px;">
+										<div class="col-md-4">
+                        <div class="form-group">
+                          <label class=" label-control" for="projectinput7">Content</label>
+                            <select name="contentType" class="form-control" formControlName="contentType">
+                              <option value="" selected>Select Content </option>
+                              <option *ngFor="let obj of contentType" [value]='obj.id'>{{obj.name}}</option>
+                            </select>
+                            </div>
+                        </div>
+                        <!-- <div class="col-md-4">
+                        <div class="form-group">
                             <label class=" label-control" for="projectinput7">Category</label>
-                              <select class="form-control" name="category" [(ngModel)]="category">
+                              <select name="category" class="form-control" formControlName="category">
                                 <option value="" selected>Select Category </option>
                                 <option *ngFor="let obj of categoryList" [value]='obj.cm_id'>{{obj.cm_name}}</option>
                               </select>
                               </div>
+                        </div> -->
+                        <div class="col-md-4">
+                          <div class="form-group">
+                              <label class=" label-control" for="projectinput7">Content Provider</label>
+                                <select name="cp" class="form-control" formControlName="cp">
+                                  <option value="" selected>Select Content Provider </option>
+                                  <option *ngFor="let obj of cp" [value]='obj.id'>{{obj.cpname}}</option>
+                                </select>
+                                </div>
                           </div>
-						        </div>
-						  </div>
-						<br>
+						    </div>
+            </div>
+            <br>
 						<h4 class="form-section"></h4>
 						<div class="form-actions">
-								<div class="">
-									<button type="submit" class="btn btn-raised btn-primary mr-1" (click)="getHtmlGameData()">Submit</button>
-								</div>
-							</div>
-					</div>
+                  <button type="submit" class="btn btn-raised btn-primary mr-1" [disabled]="!contentForm.valid" (click)="getHtmlGameData()">Submit</button>
+            </div>
+          </div>
 				
-        <!-- </div> -->
-      <!-- </form> -->
+        </div>
+      </form>
     </div>
   </div>
 </div>
 
-<div class="row text-left justify-content-md-center" >
+<div class="row text-left justify-content-md-center" *ngIf="showTable">
   <div class="col-md-12">
     <div class="card">
         <div class="card-body">
-            <div id ="campaignsummarydata" style="font-size: 0.8em; overflow-x: auto; overflow-y: auto; height: 500px;">
-               <table id="summaryTable" cellpadding="0" cellspacing="0" class="display table table-bordered">
+            <section class="">
+                <div class="contain" >
+                <table id="summaryTable">
                 <thead>
-                <tr>
-                  <th style="padding: 5px;">Date</th>
-                  <th style="padding: 5px;">File Name</th>
-                  <th style="padding: 5px;">Download</th>
-                  <th style="padding: 5px;">Status</th>
-                </tr>
+                  <tr class="header">
+                    <th>Date
+                        <div>Date</div>
+                    </th>
+                    <th >File Name
+                        <div>File Name</div>
+                    </th>
+                    <!-- <th >Content Provider</th> -->
+                    <th >Download
+                        <div>Download</div>
+                    </th>
+                    <th >Status
+                        <div>Status</div>
+                    </th>
+                  </tr>
                 </thead>
                 <tbody>
-                    <tr *ngFor="let obj of rowdata  ">
+                    <tr *ngFor="let obj of rowdata">
                       <td class="hidden-phone">{{obj.cdm_addedon}}</td>  
                       <td class="hidden-phone">{{obj.cdm_title}}</td>
                        <td >
-                          <a href="{{content_url}}{{obj.cdm_content_path}}" (click)="downloadImage(obj)">Download</a>
+                          <a href="{{content_url}}{{obj.cdm_content_path}}">Download</a>
                        </td>
                        <td class="hidden-phone">{{obj.cdm_status}}</td>
-                       <!-- <td class="hidden-phone">
-                        <button type="button" class="btn btn-raised btn-primary mr-1" (click)="approve(obj.cdm_id)">Approve</button>
-                        <button type="button" class="btn btn-raised btn-warning mr-1" (click)="reject(obj.cdm_id)">Reject</button>
-                      </td> -->
                     </tr>
                 </tbody>
-              </table>
+                </table>
             </div>
+            </section>
         </div>
     
   </div>

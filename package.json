@@ -23,7 +23,7 @@
     "@angular/platform-server": "^6.0.4",
     "@angular/router": "^6.0.4",
     "@auth0/angular-jwt": "^2.0.0",
-    "@ng-bootstrap/ng-bootstrap": "^1.0.2",
+    "@ng-bootstrap/ng-bootstrap": "^3.3.1",
     "@ngx-translate/core": "^10.0.2",
     "@swimlane/ngx-charts": "^9.0.0",
     "@types/d3-shape": "^1.2.4",

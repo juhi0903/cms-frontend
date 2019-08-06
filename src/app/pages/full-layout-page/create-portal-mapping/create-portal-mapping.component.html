@@ -1,9 +1,6 @@
 <div class="row text-left justify-content-md-center">
 	<div class="col-md-12">
 		<div class="card">
-			<!-- <div class="card-header">
-				<h6 class="card-title" id="striped-row-layout-basic">Create Offer</h6>
-			</div> -->
 			<form (ngSubmit)="viewCategoryPortalMapping()" class="form form-horizontal striped-rows form-bordered" [formGroup]="categoryPortalForm" novalidate>
 				<div formGroupName="categoryPortalInformation">
 					<div class="card-body">
@@ -84,32 +81,35 @@
 						<h4 class="card-title">Summary</h4>
 					</div> -->
 					<div class="card-body">
-							<div id ="campaignsummarydata" style="font-size: 0.8em; overflow-x: auto; overflow-y: auto; height: 500px;">
-								 <table id="summaryTable" cellpadding="0" cellspacing="0" class="display table table-bordered">
-									<thead>
-									<tr>
-										<th style="padding: 5px;">Date</th>
-										<th style="padding: 5px;">Portal Name</th>
-										<th style="padding: 5px;">Preview</th>
-										<th style="padding: 5px;">Content Name</th>
-										<th style="padding: 5px;">Content Type</th>
-										<th style="padding: 5px;">Category Name</th>
-										<th style="padding: 5px;">Country</th>
-										<th style="padding: 5px;">Operator</th>
-										<th style="padding: 5px;">Status</th>
-
-									</tr>
+							<input type="text" id="myInput" (keyup)="myFunction()" placeholder="Search " title="Type in a name" style="margin: 20px; padding: 10px;">
+							<section class="">
+								<div class="contain">
+									<table id="summaryTable">
+										<thead>
+											<tr class="header">
+												<th> Select
+													<div><input type="checkbox" name="all" (change)="checkAll($event)" /> Select </div>
+												</th>
+												<th >Date <div>Date</div></th>
+												<th >Portal Name<div>Portal Name</div></th>
+												<th >Preview <div>Preview</div></th>
+												<th >Content Name <div>Content Name</div></th>
+												<th >Content Type <div>Content Type</div></th>
+												<th >Category Name <div>Category Name</div></th>
+												<th >Country <div>Country</div></th>
+												<th >Operator <div>Operator</div></th>
+												<th >Status <div>Status</div> </th>
+											</tr>
 									</thead>
 									<tbody>
 											<tr *ngFor="let obj of rowdata  ">
-												<!-- <tr> -->
+												<td class="hidden-phone"> 
+												<input type="checkbox" name="sizecb[]" value="{{obj.cdm_id}}" [(ngModel)]="obj.state"/></td>
 												<td class="hidden-phone">{{obj.cpm_addedon}}</td>
 
 												<td class="hidden-phone">{{obj.pm_name}}</td>
-													<td >
-														<!-- <div style="width: 100px; height: 100px;" class="fileupload-new thumbnail"> -->
-														<img alt="image" src="{{content_url}}{{obj.cdm_content_path}}" height="60px" width="60px" (click)="expandImage(obj)">
-														<!-- </div> -->
+												<td class="hidden-phone">
+													<img alt="image" src="{{content_url}}{{obj.cdm_content_path}}" height="60px" width="60px" (click)="expandImage(obj)">
 												 </td>
 												 <td class="hidden-phone">{{obj.cdm_title}}</td>
 												 <td class="hidden-phone">{{obj.ct_name}}</td>
@@ -123,6 +123,7 @@
 									</tbody>
 								</table>
 							</div>
+						</section>
 					</div>
 			
 		</div>

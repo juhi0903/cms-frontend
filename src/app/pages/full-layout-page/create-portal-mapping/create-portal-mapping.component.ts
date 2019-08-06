@@ -63,7 +63,6 @@ export class CreatePortalMappingComponent implements OnInit {
 
   getCountryList = async () => {
     this.countryList = await this._CategoryService.getAllCountry();
-       
 
   }
 
@@ -71,24 +70,6 @@ export class CreatePortalMappingComponent implements OnInit {
     let country = this.categoryPortalForm.value.categoryPortalInformation.country;
     this.categoryPortalForm.get('categoryPortalInformation.operator').enable();
     this.operatorList = await this._CategoryService.getOperatorList(country);
-
-  }
-
-  categoryPortalMapping = async () =>{
-
-    let data : any = {
-      portal_id   :  this.categoryPortalForm.value.categoryPortalInformation.portal,
-      country_id   : this.categoryPortalForm.value.categoryPortalInformation.country,  
-      operator_id    : this.categoryPortalForm.value.categoryPortalInformation.operator,
-      content_type_id : this.categoryPortalForm.value.categoryPortalInformation.contentType,
-      category_id   : this.categoryPortalForm.value.categoryPortalInformation.category,
-    }
-
-    console.log(data);
-    // let d = await this._CategoryService.saveContentPortalMapping(data);
-    // this.uploadedSuccessfully();
-    // window.alert("Mapping Done SUccessfully");
-    // console.log(d);
 
   }
 
@@ -149,4 +130,30 @@ export class CreatePortalMappingComponent implements OnInit {
       modalRef.componentInstance.imageUrl = link;
     }
 
+    checkAll(ev) {
+      this.rowdata.forEach(x => {
+        x.state = ev.target.checked;
+        console.log(x.state);
+  
+      });
+    }
+
+    myFunction() {
+      var input, filter, table, tr, td, i, txtValue;
+      input = document.getElementById("myInput");
+      filter = input.value.toUpperCase();
+      table = document.getElementById("summaryTable");
+      tr = table.getElementsByTagName("tr");
+      for (i = 0; i < tr.length; i++) {
+        td = tr[i].getElementsByTagName("td")[4];
+        if (td) {
+          txtValue = td.textContent || td.innerText;
+          if (txtValue.toUpperCase().indexOf(filter) > -1) {
+            tr[i].style.display = "";
+          } else {
+            tr[i].style.display = "none";
+          }
+        }       
+      }
+    }
 }

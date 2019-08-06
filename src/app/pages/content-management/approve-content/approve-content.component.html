@@ -61,28 +61,59 @@
         <!-- <div class="card-header">
           <h4 class="card-title">Summary</h4>
         </div> -->
-        <div class="card-body">
-            <div id ="campaignsummarydata" style="font-size: 0.8em; overflow-x: auto; overflow-y: auto; height: 500px;">
-               <table id="summaryTable" cellpadding="0" cellspacing="0" class="display table table-bordered">
+        <div class="card-body" *ngIf="showTable">
+            <div>
+            <input type="text" id="myInput" (keyup)="myFunction()" placeholder="Search" title="Type in a name" style="margin: 20px; padding: 10px;"/>
+            <button type="submit" class="btn btn-raised btn-primary mr-1" style="float:right;margin: 20px; padding: 10px;" (click)="approveInBulk()">Approve Selected</button>
+            <button type="submit" class="btn btn-raised btn-warning mr-1" style="float:right;margin: 20px; padding: 10px;" (click)="rejectInBulk()">Reject Selected</button> 
+            </div>
+           
+            <div style="margin-left: 15px; padding: 5px;">
+                <p> Total Rows : {{rowdata.length}}</p>
+              </div>
+
+            <section class="">
+            <div class="contain" >
+               <table id="summaryTable">
                 <thead>
-                <tr>
-                  <th style="padding: 5px;">Date</th>
-                  <th style="padding: 5px;">Preview</th>
-                  <th style="padding: 5px;">Content Name</th>
-                  <th style="padding: 5px;">Action</th>
+                <tr class="header">
+                  <th>Select
+                      <div>
+                          <input type="checkbox" name="all" (change)="checkAll($event)" />
+                          Select </div>
+                  </th>
+                  <th>Date
+                      <div>Date</div>
+                  </th>
+                  <th>Preview
+                      <div>Preview</div>
+                  </th>
+                  <th>Content Name
+                      <div (click)="sortTable(3)" >Content Name</div>
+                  </th>
+                  <th>Content Provider
+                      <div (click)="sortTable(4)">Content Provider</div>
+                  </th>
+                  <th>Action
+                      <div>Action</div>
+                  </th>
                 </tr>
                 </thead>
                 <tbody>
                     <tr *ngFor="let obj of rowdata  ">
                       <!-- <tr> -->
-                      <td class="hidden-phone">{{obj.cdm_addedon}}</td>                       
+                      <td class="hidden-phone" >
+                          <input type="checkbox" name="sizecb[]" value="{{obj.cdm_id}}" [(ngModel)]="obj.state"/>
+                      </td>                       
+                      <td class="hidden-phone" >{{obj.cdm_addedon}}</td>                       
                        <td >
                           <!-- <div style="width: 100px; height: 100px;" class="fileupload-new thumbnail"> -->
                           <img alt="image" src="{{content_url}}{{obj.cdm_content_path}}" height="60px" width="60px" (click)="expandImage(obj)">
                           <!-- </div> -->
                        </td>
-                       <td class="hidden-phone">{{obj.cdm_title}}</td>
-                       <td class="hidden-phone">
+                       <td class="hidden-phone" >{{obj.cdm_title}}</td>
+                       <td class="hidden-phone" >{{obj.cdm_cp}}</td>
+                       <td class="hidden-phone" >
                         <button type="button" class="btn btn-raised btn-primary mr-1" (click)="approve(obj.cdm_id)">Approve</button>
                         <button type="button" class="btn btn-raised btn-warning mr-1" (click)="reject(obj.cdm_id)">Reject</button>
                       </td>
@@ -90,8 +121,14 @@
                 </tbody>
               </table>
             </div>
+            </section>
         </div>
     
   </div>
 </div>
 </div>
+
+<script>
+   var divHeight = $('#header').height(); 
+    $('#container').css('margin-top', divHeight+'px');
+</script>

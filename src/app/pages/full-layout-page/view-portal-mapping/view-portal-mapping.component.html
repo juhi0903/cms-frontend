@@ -1,128 +1,117 @@
 <div class="row text-left justify-content-md-center">
 	<div class="col-md-12">
 		<div class="card">
-			<!-- <div class="card-header">
-				<h6 class="card-title" id="striped-row-layout-basic">Create Offer</h6>
-			</div> -->
-			<form (ngSubmit)="categoryPortalMapping()" class="form form-horizontal striped-rows form-bordered" [formGroup]="categoryPortalForm" novalidate>
+			<form (ngSubmit)="selectContent()" class="form form-horizontal striped-rows form-bordered" [formGroup]="categoryPortalForm"
+			 novalidate>
 				<div formGroupName="categoryPortalInformation">
 					<div class="card-body">
-						<!-- <div class="px-3"> -->
 						<div class="form-body">
 							<h4 class="form-section"><i class="ft-file-text"></i>Category Mapping</h4>
-							<div class="form-group row">
-								<label class="col-md-3 label-control" for="projectinput7">Portal</label>
-								<div class="col-md-4">
-									<select name="portal" class="form-control" formControlName="portal">
-										<option value="" selected>Select Portal</option>
-										<option *ngFor="let obj of portalList" [value]='obj.pm_id'>{{obj.pm_name}}</option>
-									</select>
-									</div>
-								 </div>
-								 <div class="form-group row">
-									<label class="col-md-3 label-control" for="projectinput7">Country</label>
-									<div class="col-md-4">
+							<div class="row">
+							<div class="col-md-4">
+								<div class="form-group">
+									<label class="label-control" for="projectinput7">Portal</label>
+										<select name="portal" class="form-control" formControlName="portal">
+											<option value="" selected>Select Portal</option>
+											<option *ngFor="let obj of portalList" [value]='obj.pm_id'>{{obj.pm_name}}</option>
+										</select>
+								</div>
+							</div>
+							<div class="col-md-4">
+								<div class="form-group">
+									<label class="label-control" for="projectinput7">Country</label>
 										<select name="country" class="form-control" formControlName="country" (change)="selectOperator()">
 											<option value="" selected>Select Country</option>
 											<option *ngFor="let obj of countryList" [value]='obj.id'>{{obj.name}}</option>
 										</select>
-										</div>
-									</div>
-									<div class="form-group row">
-										<label class="col-md-3 label-control" for="projectinput7">Operator</label>
-										<div class="col-md-4">
-											<select name="operator" class="form-control" formControlName="operator">
-												<option value="" selected>Select Operator</option>
-												<option *ngFor="let obj of operatorList" [value]='obj.id'>{{obj.name}}</option>
-											</select>
-											</div>
-										</div>
-							<div class="form-group row">
-								<label class="col-md-3 label-control" for="projectinput7">Content</label>
-								<div class="col-md-4">
-									<select name="contentType" class="form-control" formControlName="contentType" (change)="selectCategory()">
-										<option value="" selected>Select Content Type</option>
-										<option *ngFor="let obj of contentType" [value]='obj.id'>{{obj.name}}</option>
-									</select>
-								  </div>
-							</div>
-              <div class="form-group row">
-                  <label class="col-md-3 label-control" for="projectinput7">Category</label>
-                  <div class="col-md-4">
-                    <select name="category" class="form-control" formControlName="category" (change)="selectContent()">
-                      <option value="" selected>Select Category Type</option>
-                      <option *ngFor="let obj of categoryList" [value]='obj.cm_id'>{{obj.cm_name}}</option>
-                    </select>
-                    </div>
-							</div>
-							<!-- <div class="form-group row">
-								<label class="col-md-3 label-control" for="projectinput7">Content Id</label>
-								<div class="col-md-6">
-								<ng-multiselect-dropdown [data]="contentDataList"  formControlName="contentId" [settings]="dropdownContentSettings" 
-								[(ngModel)]="selectedContent" (onSelectAll)="onSelectAll($event)" (onDeSelectAll)="onDeSelectAll($event)" [placeholder]="'Select Content'">
-										<c-badge>
-											<ng-template let-item="item">
-												<label style="background: #0079FE;color: #fff;margin: 10px;">{{item.cdm_title}}</label>
-
-											</ng-template>
-										  </c-badge>
-										  <c-item>
-											<ng-template let-item="item">
-												<label> {{item.cdm_title}}</label>
-												<img  src="{{content_url}}{{obj.cdm_content_path}}" style="width: 20%; border: 1px solid #efefef;margin-right: 20px;">
-
-											</ng-template>
-										  </c-item>
-										</ng-multiselect-dropdown>
 								</div>
-							</div> -->
-							<div *ngIf="contentDataList.length>0">
-									<input type="text" id="myInput" (keyup)="myFunction()" placeholder="Search .." title="Type in a name">
-												<!-- <div  *ngFor="let obj of contentDataList"> -->
-														<div id ="campaignsummarydata" >
-															 <!-- //style="font-size: 0.8em; overflow-x: auto; overflow-y: auto; height: 500px;" -->
-																<table id="summaryTable" cellpadding="0" cellspacing="0" class="display table table-bordered">  
-																 <thead>
-																 <tr>
-																	 <th style="padding: 5px;">Select</th>
-																	 <th style="padding: 5px;">Content Name</th>
-																	 <th style="padding: 5px;">Image</th>
-																 </tr>
-																 </thead>
-																 <tbody>
-																		 <tr *ngFor="let obj of contentDataList">
-																			 <td style="width:10%">	<input type="checkbox" value='{{obj.cdm_id}}'(change)="updateCheckedOptions(obj, $event)"/></td>
-																			 <td  style="width:30%"><label for="myCheckbox1">{{obj.cdm_title}}</label></td>
-																			 <td style="height:80% ; width:50%">
-																				<div >
-																						<img alt="image" src="{{content_url}}{{obj.cdm_content_path}}" height="60px" width="60px" (click)="expandImage(obj)" >
-																				</div> 
-																			</td>
-																		</tr>
-																</tbody>
-															</table>
-
-														<!-- <div class="column" >
-																<input type="checkbox" value='{{obj.cdm_id}}'  [(ngModel)]="selectedContent"/>
-																<label for="myCheckbox1">{{obj.cdm_title}}</label>
-
-																<img alt="image" src="{{content_url}}{{obj.cdm_content_path}}" style="width:100%" > -->
-
-
-														</div>
-													
-													</div>
-
+							</div>
+							<div class="col-md-4">
+								<div class="form-group ">
+									<label class="label-control" for="projectinput7">Operator</label>
+										<select name="operator" class="form-control" formControlName="operator">
+											<option value="" selected>Select Operator</option>
+											<option *ngFor="let obj of operatorList" [value]='obj.id'>{{obj.name}}</option>
+										</select>
+								</div>
+							</div>
+							</div>
+							<div class="row">
+							<div class="col-md-4">
+								<div class="form-group">
+									<label class="label-control" for="projectinput7">Content</label>
+										<select name="contentType" class="form-control" formControlName="contentType" (change)="selectCategory()">
+											<option value="" selected>Select Content Type</option>
+											<option *ngFor="let obj of contentType" [value]='obj.id'>{{obj.name}}</option>
+										</select>
+								</div>
+							</div>
+							<div class="col-md-4">
+								<div class="form-group">
+									<label class="label-control" for="projectinput7">Category</label>
+										<select name="category" class="form-control" formControlName="category" (change)="selectContent()">
+											<option value="" selected>Select Category Type</option>
+											<option *ngFor="let obj of categoryList" [value]='obj.cm_id'>{{obj.cm_name}}</option>
+										</select>
+								</div>
 							</div>
 						</div>
+						</div>
+					</div>
+					<br>
+						<h4 class="form-section"></h4>
 						<div class="form-actions">
-							<div class="col-md-3">
-								<button type="submit" class="btn btn-raised btn-primary mr-1" [disabled]="!categoryPortalForm.valid">Submit</button>
+								<div class="">
+									<button type="submit" class="btn btn-raised btn-primary mr-1" [disabled]="!categoryPortalForm.valid">Submit</button>
+								</div>
 							</div>
-						</div>
-          </div>
-        <!-- </div> -->
-      </form>
-    </div>
-  </div>
+				</div>
+			</form>
+		</div>
+	</div>
+</div>
+<div class="card" *ngIf="contentDataList.length>0">
+		<div class="card-body">
+				<input type="text" id="myInput" (keyup)="myFunction()" placeholder="Search " title="Type in a name" style="margin: 20px; padding: 10px;">
+				<!-- <div  *ngFor="let obj of contentDataList"> -->
+				<section class="">
+					<div class="contain">
+						<table id="summaryTable">
+							<thead>
+								<tr class="header">
+									<th> Select
+											<div><input type="checkbox" name="all" (change)="checkAll($event)" /> Select </div>
+									</th>
+									<th>Content Name
+											<div>Content Name</div>
+									</th>
+									<th>Image
+											<div>Image</div>
+									</th>
+								</tr>
+							</thead>
+							<tbody>
+								<tr *ngFor="let obj of contentDataList">
+									<td class="hidden-phone"> 
+											<input type="checkbox" name="sizecb[]" value="{{obj.cdm_id}}" [(ngModel)]="obj.state"/>
+										<!-- <input type="checkbox" value='{{obj.cdm_id}}' (change)="updateCheckedOptions(obj, $event)"/></td> -->
+									<td class="hidden-phone"><label for="myCheckbox1">{{obj.cdm_title}}</label></td>
+									<td class="hidden-phone">
+										<div>
+											<img alt="image" src="{{content_url}}{{obj.cdm_content_path}}" height="60px" width="60px" (click)="expandImage(obj)">
+										</div>
+									</td>
+								</tr>
+							</tbody>
+						</table>
+					</div>
+					</section>
+			</div>
+			<br>
+			<div class="form-actions">
+					<div class="col-md-3">
+						<button type="submit" class="btn btn-raised btn-primary mr-1" (click)="categoryPortalMapping()">Submit</button>
+					</div>
+			</div>
+
 </div>

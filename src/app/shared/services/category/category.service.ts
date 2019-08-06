@@ -140,9 +140,9 @@ export class CategoryService {
     return result;
   }
 
-  public getHtmlGamesData = async (contentid): Promise<any[]> => {
+  public getHtmlGamesData = async (contentid,cp): Promise<any[]> => {
 
-    return this._httpService.get(urls.BASE_URL + urls.htmlgames +'/' +contentid).toPromise() as any;
+    return this._httpService.get(urls.BASE_URL + urls.htmlgames +'/' +contentid + '/' +cp).toPromise() as any;
 
   }
 

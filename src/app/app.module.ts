@@ -30,7 +30,7 @@ import { AuthGuard } from './shared/auth/auth-guard.service';
         BrowserAnimationsModule,
         AppRoutingModule,
         SharedModule,
-        NgbModule.forRoot(),
+        NgbModule,
         HttpModule,
         HttpClientModule,
         FormsModule,

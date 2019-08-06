@@ -45,9 +45,11 @@ export class ShowImageComponent implements OnInit {
   }
 
   showgames(){
-    // console.log(this.gameUrl);
-    // this.router.navigateByUrl(this.gameUrl);
+    if(this.gameUrl == null || this.gameUrl== ''){
+    } 
+    else{   // this.router.navigateByUrl(this.gameUrl);
     window.open(this.gameUrl);
+    }
   }
 
 }
